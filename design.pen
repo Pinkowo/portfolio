@@ -1,0 +1,1954 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "wTaGI",
+      "x": -720,
+      "y": -4500,
+      "name": "Version G - Space Journey",
+      "width": 1440,
+      "height": 9000,
+      "fill": "#030308",
+      "layout": "none",
+      "children": [
+        {
+          "type": "ellipse",
+          "id": "N70JJ",
+          "x": 65,
+          "y": 45,
+          "name": "s1",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "M4Kz0",
+          "x": 290,
+          "y": 130,
+          "name": "s2",
+          "fill": "#C7D2FE",
+          "width": 3,
+          "height": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "qOe2e",
+          "x": 490,
+          "y": 25,
+          "name": "s3",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "ihDZd",
+          "x": 950,
+          "y": 160,
+          "name": "s4",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "zeyoY",
+          "x": 1180,
+          "y": 50,
+          "name": "s5",
+          "fill": "#A5B4FC",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "74t49",
+          "x": 1380,
+          "y": 130,
+          "name": "s6",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "SdurX",
+          "x": 145,
+          "y": 310,
+          "name": "s7",
+          "fill": "#06B6D4",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "loPwg",
+          "x": 820,
+          "y": 380,
+          "name": "s8",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "DArTS",
+          "x": 1320,
+          "y": 290,
+          "name": "s9",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "QFDYB",
+          "x": 55,
+          "y": 580,
+          "name": "s10",
+          "fill": "#C7D2FE",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "oOPbt",
+          "x": 350,
+          "y": 620,
+          "name": "s11",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "KRzM1",
+          "x": 1250,
+          "y": 550,
+          "name": "s12",
+          "fill": "#FFFFFF",
+          "width": 3,
+          "height": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "SC4L7",
+          "x": 1420,
+          "y": 700,
+          "name": "s13",
+          "fill": "#E0E7FF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "k7HrR",
+          "x": 180,
+          "y": 980,
+          "name": "s14",
+          "fill": "#06B6D4",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "KIyU6",
+          "x": 480,
+          "y": 1050,
+          "name": "s15",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "4NhSf",
+          "x": 1350,
+          "y": 1180,
+          "name": "s16",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "Ulf6G",
+          "x": 100,
+          "y": 1600,
+          "name": "s17",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "5L4gY",
+          "x": 1420,
+          "y": 1500,
+          "name": "s18",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "Y7QIY",
+          "x": 850,
+          "y": 1850,
+          "name": "s19",
+          "fill": "#C7D2FE",
+          "width": 3,
+          "height": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "ce1OO",
+          "x": 1350,
+          "y": 2100,
+          "name": "s20",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "YlMWO",
+          "x": 70,
+          "y": 2600,
+          "name": "s21",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "7Wq0u",
+          "x": 600,
+          "y": 2750,
+          "name": "s22",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "FvTF7",
+          "x": 1310,
+          "y": 2700,
+          "name": "s23",
+          "fill": "#A5B4FC",
+          "width": 3,
+          "height": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "YOwJX",
+          "x": 130,
+          "y": 3100,
+          "name": "s24",
+          "fill": "#06B6D4",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "eHELB",
+          "x": 800,
+          "y": 3300,
+          "name": "s25",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "PiQNq",
+          "x": 450,
+          "y": 3600,
+          "name": "s26",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "IFu0O",
+          "x": 1200,
+          "y": 3800,
+          "name": "s27",
+          "fill": "#C7D2FE",
+          "width": 3,
+          "height": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "ZfizO",
+          "x": 65,
+          "y": 4100,
+          "name": "s28",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "yUprV",
+          "x": 400,
+          "y": 4350,
+          "name": "s29",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "DaJbz",
+          "x": 1100,
+          "y": 4200,
+          "name": "s30",
+          "fill": "#A5B4FC",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "gHuIB",
+          "x": 1380,
+          "y": 4500,
+          "name": "s31",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "S9JYt",
+          "x": 200,
+          "y": 4750,
+          "name": "s32",
+          "fill": "#06B6D4",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "MDkEB",
+          "x": 600,
+          "y": 4900,
+          "name": "s33",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "csUGs",
+          "x": 1280,
+          "y": 5050,
+          "name": "s34",
+          "fill": "#FFFFFF",
+          "width": 3,
+          "height": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "mFV7T",
+          "x": 45,
+          "y": 5300,
+          "name": "s35",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "A7ZH3",
+          "x": 400,
+          "y": 5500,
+          "name": "s36",
+          "fill": "#C7D2FE",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "zLH4t",
+          "x": 900,
+          "y": 5200,
+          "name": "s37",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "GXkod",
+          "x": 1350,
+          "y": 5600,
+          "name": "s38",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "ai5PL",
+          "x": 150,
+          "y": 5900,
+          "name": "s39",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "Ye9iv",
+          "x": 700,
+          "y": 6100,
+          "name": "s40",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "r9O7m",
+          "x": 1200,
+          "y": 6300,
+          "name": "s41",
+          "fill": "#FDE68A",
+          "width": 3,
+          "height": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "GcbsY",
+          "x": 300,
+          "y": 6500,
+          "name": "s42",
+          "fill": "#FDE68A",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "StYYL",
+          "x": 900,
+          "y": 6700,
+          "name": "s43",
+          "fill": "#FDE68A",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "LCcKt",
+          "x": 1400,
+          "y": 6800,
+          "name": "s44",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "GzMnG",
+          "x": 250,
+          "y": 7100,
+          "name": "s45",
+          "fill": "#FDE68A",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "W3gEY",
+          "x": 750,
+          "y": 6900,
+          "name": "s46",
+          "fill": "#F97316",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "2nvYK",
+          "x": 450,
+          "y": 2200,
+          "name": "s47",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "ellipse",
+          "id": "iipbn",
+          "x": 1050,
+          "y": 2400,
+          "name": "s48",
+          "fill": "#FFFFFF",
+          "width": 2,
+          "height": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "CTVHu",
+          "x": 750,
+          "y": 3050,
+          "name": "s49",
+          "fill": "#FFFFFF",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "text",
+          "id": "qa6sN",
+          "x": 0,
+          "y": 55,
+          "name": "heroName",
+          "fill": "#FFFFFF",
+          "content": "Pink Li",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 80,
+          "fontWeight": "bold",
+          "letterSpacing": 8
+        },
+        {
+          "type": "text",
+          "id": "PSE4b",
+          "x": 0,
+          "y": 158,
+          "name": "heroSub",
+          "fill": "#6B7BA4",
+          "content": "Frontend Engineer · Open to Work · Based in Taipei",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 16,
+          "fontWeight": "normal",
+          "letterSpacing": 2
+        },
+        {
+          "type": "text",
+          "id": "3kpHN",
+          "x": 0,
+          "y": 210,
+          "name": "scrollHint",
+          "fill": "#3B4F8A",
+          "content": "↓  scroll to launch",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 13,
+          "fontWeight": "normal",
+          "letterSpacing": 3
+        },
+        {
+          "type": "text",
+          "id": "iCTO8",
+          "x": 80,
+          "y": 780,
+          "name": "sectionLabel1",
+          "fill": "#3B82F6",
+          "content": "01 — LAUNCH",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 11,
+          "fontWeight": "normal",
+          "letterSpacing": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "HK5bw",
+          "x": 340,
+          "y": 720,
+          "name": "atmGlow",
+          "fill": "#0A2040",
+          "width": 760,
+          "height": 760
+        },
+        {
+          "type": "ellipse",
+          "id": "li9U1",
+          "x": 380,
+          "y": 760,
+          "name": "earth",
+          "fill": "#1B4FAD",
+          "width": 680,
+          "height": 680
+        },
+        {
+          "type": "ellipse",
+          "id": "ShDd8",
+          "x": 450,
+          "y": 820,
+          "name": "continent1",
+          "fill": "#2E7D32",
+          "width": 280,
+          "height": 220
+        },
+        {
+          "type": "ellipse",
+          "id": "p0nCE",
+          "x": 555,
+          "y": 960,
+          "name": "continent2",
+          "fill": "#388E3C",
+          "width": 180,
+          "height": 150
+        },
+        {
+          "type": "ellipse",
+          "id": "kf5Fz",
+          "x": 610,
+          "y": 800,
+          "name": "oceanHL",
+          "fill": "#2196F3",
+          "width": 220,
+          "height": 170
+        },
+        {
+          "type": "ellipse",
+          "id": "0o8lo",
+          "x": 490,
+          "y": 774,
+          "name": "earthCloud",
+          "fill": "#FFFFFF",
+          "width": 130,
+          "height": 55
+        },
+        {
+          "type": "text",
+          "id": "K0woD",
+          "x": 0,
+          "y": 1470,
+          "name": "earthLbl",
+          "fill": "#3B82F6",
+          "content": "— EARTH —",
+          "textAlign": "center",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 11,
+          "fontWeight": "normal",
+          "letterSpacing": 4
+        },
+        {
+          "type": "frame",
+          "id": "cd1aB",
+          "x": 700,
+          "y": 645,
+          "name": "rocketBodyS",
+          "width": 44,
+          "height": 88,
+          "fill": "#F1F5F9",
+          "cornerRadius": 22
+        },
+        {
+          "type": "frame",
+          "id": "Cdyyz",
+          "x": 689,
+          "y": 704,
+          "name": "rocketWingLS",
+          "width": 13,
+          "height": 24,
+          "fill": "#CBD5E1",
+          "cornerRadius": 4
+        },
+        {
+          "type": "frame",
+          "id": "IvJpj",
+          "x": 742,
+          "y": 704,
+          "name": "rocketWingRS",
+          "width": 13,
+          "height": 24,
+          "fill": "#CBD5E1",
+          "cornerRadius": 4
+        },
+        {
+          "type": "ellipse",
+          "id": "Du282",
+          "x": 710,
+          "y": 665,
+          "name": "rocketWindowS",
+          "fill": "#06B6D4",
+          "width": 24,
+          "height": 24
+        },
+        {
+          "type": "ellipse",
+          "id": "y0gac",
+          "x": 704,
+          "y": 730,
+          "name": "rocketFlameS",
+          "fill": "#F97316",
+          "width": 36,
+          "height": 34
+        },
+        {
+          "type": "ellipse",
+          "id": "VIsHD",
+          "x": 710,
+          "y": 736,
+          "name": "rocketFlameCoreS",
+          "fill": "#FDE68A",
+          "width": 24,
+          "height": 22
+        },
+        {
+          "type": "frame",
+          "id": "ojvQN",
+          "x": 685,
+          "y": 1970,
+          "name": "rocketBodyM",
+          "width": 70,
+          "height": 140,
+          "fill": "#F1F5F9",
+          "cornerRadius": 35
+        },
+        {
+          "type": "frame",
+          "id": "t8GiT",
+          "x": 670,
+          "y": 2074,
+          "name": "rocketWingLM",
+          "width": 18,
+          "height": 36,
+          "fill": "#CBD5E1",
+          "cornerRadius": 6
+        },
+        {
+          "type": "frame",
+          "id": "jyaO5",
+          "x": 755,
+          "y": 2074,
+          "name": "rocketWingRM",
+          "width": 18,
+          "height": 36,
+          "fill": "#CBD5E1",
+          "cornerRadius": 6
+        },
+        {
+          "type": "ellipse",
+          "id": "JKoRM",
+          "x": 697,
+          "y": 1998,
+          "name": "rocketWindowM",
+          "fill": "#06B6D4",
+          "width": 36,
+          "height": 36
+        },
+        {
+          "type": "ellipse",
+          "id": "GwW28",
+          "x": 679,
+          "y": 2103,
+          "name": "rocketFlameM",
+          "fill": "#F97316",
+          "width": 58,
+          "height": 46
+        },
+        {
+          "type": "ellipse",
+          "id": "TOcio",
+          "x": 689,
+          "y": 2111,
+          "name": "rocketFlameCoreM",
+          "fill": "#FDE68A",
+          "width": 38,
+          "height": 32
+        },
+        {
+          "type": "text",
+          "id": "05vz5",
+          "x": 80,
+          "y": 1600,
+          "name": "sectionLabel2",
+          "fill": "#818CF8",
+          "content": "02 — FIRST ORBIT",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 11,
+          "fontWeight": "normal",
+          "letterSpacing": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "y4EqM",
+          "x": -80,
+          "y": 1875,
+          "name": "saturnRingBack",
+          "fill": "#C8A850",
+          "width": 540,
+          "height": 85
+        },
+        {
+          "type": "ellipse",
+          "id": "0bflI",
+          "x": 40,
+          "y": 1700,
+          "name": "saturnBody",
+          "fill": "#E8C97C",
+          "width": 340,
+          "height": 310
+        },
+        {
+          "type": "ellipse",
+          "id": "TIqEg",
+          "x": 60,
+          "y": 1800,
+          "name": "saturnBand",
+          "fill": "#D4A840",
+          "width": 300,
+          "height": 70
+        },
+        {
+          "type": "ellipse",
+          "id": "fXWHp",
+          "x": 70,
+          "y": 1870,
+          "name": "saturnBand2",
+          "fill": "#C8983C",
+          "width": 280,
+          "height": 40
+        },
+        {
+          "type": "text",
+          "id": "XiXpX",
+          "x": 80,
+          "y": 2035,
+          "name": "saturnLbl",
+          "fill": "#FDE68A",
+          "content": "♄  SATURN",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "letterSpacing": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "JFiS4",
+          "x": 1200,
+          "y": 2060,
+          "name": "moonBody",
+          "fill": "#94A3B8",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "type": "ellipse",
+          "id": "wJrQg",
+          "x": 1222,
+          "y": 2080,
+          "name": "moonCrater1",
+          "fill": "#64748B",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "type": "ellipse",
+          "id": "6JV2R",
+          "x": 1308,
+          "y": 2138,
+          "name": "moonCrater2",
+          "fill": "#64748B",
+          "width": 28,
+          "height": 28
+        },
+        {
+          "type": "ellipse",
+          "id": "M3bQh",
+          "x": 1245,
+          "y": 2195,
+          "name": "moonCrater3",
+          "fill": "#64748B",
+          "width": 18,
+          "height": 18
+        },
+        {
+          "type": "text",
+          "id": "GlezT",
+          "x": 1222,
+          "y": 2278,
+          "name": "moonLbl",
+          "fill": "#CBD5E1",
+          "content": "☽  MOON",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "letterSpacing": 2
+        },
+        {
+          "type": "text",
+          "id": "FvMtl",
+          "x": 80,
+          "y": 3100,
+          "name": "sectionLabel3",
+          "fill": "#F0ABFC",
+          "content": "03 — ASTEROID BELT",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 11,
+          "fontWeight": "normal",
+          "letterSpacing": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "mr2LT",
+          "x": 1050,
+          "y": 3300,
+          "name": "jupiterBody",
+          "fill": "#C17F3E",
+          "width": 400,
+          "height": 360
+        },
+        {
+          "type": "ellipse",
+          "id": "5ES87",
+          "x": 1060,
+          "y": 3380,
+          "name": "jupiterBand1",
+          "fill": "#A0612C",
+          "width": 380,
+          "height": 60
+        },
+        {
+          "type": "ellipse",
+          "id": "EvwSD",
+          "x": 1065,
+          "y": 3470,
+          "name": "jupiterBand2",
+          "fill": "#D4924A",
+          "width": 370,
+          "height": 80
+        },
+        {
+          "type": "ellipse",
+          "id": "f7GKf",
+          "x": 1070,
+          "y": 3560,
+          "name": "jupiterBand3",
+          "fill": "#A0612C",
+          "width": 360,
+          "height": 50
+        },
+        {
+          "type": "text",
+          "id": "pL6Zc",
+          "x": 1100,
+          "y": 3682,
+          "name": "jupiterLbl",
+          "fill": "#F97316",
+          "content": "♃  JUPITER",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "letterSpacing": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "TqdgP",
+          "x": -20,
+          "y": 4100,
+          "name": "marsBody",
+          "fill": "#C1440E",
+          "width": 300,
+          "height": 300
+        },
+        {
+          "type": "ellipse",
+          "id": "vRoU2",
+          "x": 68,
+          "y": 4102,
+          "name": "marsPolar",
+          "fill": "#F0F4FF",
+          "width": 80,
+          "height": 36
+        },
+        {
+          "type": "ellipse",
+          "id": "XGeYv",
+          "x": 40,
+          "y": 4210,
+          "name": "marsCrater",
+          "fill": "#A03308",
+          "width": 60,
+          "height": 58
+        },
+        {
+          "type": "ellipse",
+          "id": "5841A",
+          "x": 160,
+          "y": 4310,
+          "name": "marsCrater2",
+          "fill": "#A03308",
+          "width": 38,
+          "height": 36
+        },
+        {
+          "type": "text",
+          "id": "7yEPZ",
+          "x": 60,
+          "y": 4420,
+          "name": "marsLbl",
+          "fill": "#F97316",
+          "content": "♂  MARS",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "letterSpacing": 2
+        },
+        {
+          "type": "frame",
+          "id": "HI0Pp",
+          "x": 680,
+          "y": 3750,
+          "name": "rocketBodyL",
+          "width": 80,
+          "height": 158,
+          "fill": "#F1F5F9",
+          "cornerRadius": 40
+        },
+        {
+          "type": "frame",
+          "id": "aCx8f",
+          "x": 662,
+          "y": 3874,
+          "name": "rocketWingLL",
+          "width": 20,
+          "height": 40,
+          "fill": "#CBD5E1",
+          "cornerRadius": 6
+        },
+        {
+          "type": "frame",
+          "id": "7hill",
+          "x": 760,
+          "y": 3874,
+          "name": "rocketWingRL",
+          "width": 20,
+          "height": 40,
+          "fill": "#CBD5E1",
+          "cornerRadius": 6
+        },
+        {
+          "type": "ellipse",
+          "id": "eylYF",
+          "x": 690,
+          "y": 3778,
+          "name": "rocketWindowL",
+          "fill": "#06B6D4",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "type": "ellipse",
+          "id": "TzBqL",
+          "x": 668,
+          "y": 3900,
+          "name": "rocketFlameL",
+          "fill": "#F97316",
+          "width": 64,
+          "height": 52
+        },
+        {
+          "type": "ellipse",
+          "id": "Xcjfv",
+          "x": 678,
+          "y": 3910,
+          "name": "rocketFlameCoreL",
+          "fill": "#FDE68A",
+          "width": 44,
+          "height": 38
+        },
+        {
+          "type": "text",
+          "id": "7beOl",
+          "x": 80,
+          "y": 5300,
+          "name": "sectionLabel4",
+          "fill": "#06B6D4",
+          "content": "04 — DEEP SPACE",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 11,
+          "fontWeight": "normal",
+          "letterSpacing": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "MMS2s",
+          "x": -160,
+          "y": 5510,
+          "name": "neptuneRing",
+          "fill": "#1E3A8A",
+          "width": 620,
+          "height": 90
+        },
+        {
+          "type": "ellipse",
+          "id": "AckWb",
+          "x": -80,
+          "y": 5300,
+          "name": "neptuneBody",
+          "fill": "#3B5BDB",
+          "width": 460,
+          "height": 460
+        },
+        {
+          "type": "ellipse",
+          "id": "yfPQz",
+          "x": -60,
+          "y": 5420,
+          "name": "neptuneBand",
+          "fill": "#2E46B0",
+          "width": 420,
+          "height": 55
+        },
+        {
+          "type": "text",
+          "id": "QX8ZO",
+          "x": 80,
+          "y": 5790,
+          "name": "neptuneLbl",
+          "fill": "#93C5FD",
+          "content": "♆  NEPTUNE",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "letterSpacing": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "wQw7O",
+          "x": 1220,
+          "y": 5400,
+          "name": "iceAsteroid",
+          "fill": "#BAE6FD",
+          "width": 150,
+          "height": 130
+        },
+        {
+          "type": "ellipse",
+          "id": "A9DX0",
+          "x": 1300,
+          "y": 5570,
+          "name": "iceAsteroid2",
+          "fill": "#93C5FD",
+          "width": 80,
+          "height": 70
+        },
+        {
+          "type": "frame",
+          "id": "milHj",
+          "x": 672,
+          "y": 5540,
+          "name": "rocketBodyXL",
+          "width": 96,
+          "height": 190,
+          "fill": "#F1F5F9",
+          "cornerRadius": 48
+        },
+        {
+          "type": "frame",
+          "id": "IDGmt",
+          "x": 652,
+          "y": 5696,
+          "name": "rocketWingLXL",
+          "width": 22,
+          "height": 48,
+          "fill": "#CBD5E1",
+          "cornerRadius": 8
+        },
+        {
+          "type": "frame",
+          "id": "7FIe4",
+          "x": 770,
+          "y": 5696,
+          "name": "rocketWingRXL",
+          "width": 22,
+          "height": 48,
+          "fill": "#CBD5E1",
+          "cornerRadius": 8
+        },
+        {
+          "type": "ellipse",
+          "id": "BVM4k",
+          "x": 684,
+          "y": 5572,
+          "name": "rocketWindowXL",
+          "fill": "#06B6D4",
+          "width": 48,
+          "height": 48
+        },
+        {
+          "type": "ellipse",
+          "id": "mNoY1",
+          "x": 660,
+          "y": 5720,
+          "name": "rocketFlameXL",
+          "fill": "#F97316",
+          "width": 80,
+          "height": 64
+        },
+        {
+          "type": "ellipse",
+          "id": "gJwrw",
+          "x": 672,
+          "y": 5730,
+          "name": "rocketFlameCoreXL",
+          "fill": "#FDE68A",
+          "width": 56,
+          "height": 48
+        },
+        {
+          "type": "text",
+          "id": "4Xe6i",
+          "x": 80,
+          "y": 7000,
+          "name": "sectionLabel5",
+          "fill": "#FDE68A",
+          "content": "05 — SOLAR ARRIVAL",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 11,
+          "fontWeight": "normal",
+          "letterSpacing": 3
+        },
+        {
+          "type": "ellipse",
+          "id": "jzU2L",
+          "x": -500,
+          "y": 7650,
+          "name": "sunCorona1",
+          "fill": "#7C2D04",
+          "width": 2440,
+          "height": 2440
+        },
+        {
+          "type": "ellipse",
+          "id": "ZBQKy",
+          "x": -280,
+          "y": 7780,
+          "name": "sunCorona2",
+          "fill": "#B45309",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "type": "ellipse",
+          "id": "K9IO0",
+          "x": -280,
+          "y": 8000,
+          "name": "sunBody",
+          "fill": "#FCD34D",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "type": "ellipse",
+          "id": "X1ByS",
+          "x": -100,
+          "y": 7900,
+          "name": "sunGlow",
+          "fill": "#FBBF24",
+          "width": 1640,
+          "height": 1640
+        },
+        {
+          "type": "frame",
+          "id": "2y9h0",
+          "x": 660,
+          "y": 7030,
+          "name": "rocketBodyFinal",
+          "width": 120,
+          "height": 240,
+          "fill": "#F8FAFC",
+          "cornerRadius": 60
+        },
+        {
+          "type": "frame",
+          "id": "yGuPq",
+          "x": 634,
+          "y": 7232,
+          "name": "rocketWingLFinal",
+          "width": 30,
+          "height": 62,
+          "fill": "#E2E8F0",
+          "cornerRadius": 10
+        },
+        {
+          "type": "frame",
+          "id": "nme0U",
+          "x": 814,
+          "y": 7232,
+          "name": "rocketWingRFinal",
+          "width": 30,
+          "height": 62,
+          "fill": "#E2E8F0",
+          "cornerRadius": 10
+        },
+        {
+          "type": "ellipse",
+          "id": "SURIN",
+          "x": 690,
+          "y": 7070,
+          "name": "rocketWindowFinal",
+          "fill": "#06B6D4",
+          "width": 60,
+          "height": 60
+        },
+        {
+          "type": "ellipse",
+          "id": "Mawts",
+          "x": 652,
+          "y": 7260,
+          "name": "rocketFlameFinal",
+          "fill": "#F97316",
+          "width": 136,
+          "height": 100
+        },
+        {
+          "type": "ellipse",
+          "id": "uEam0",
+          "x": 672,
+          "y": 7274,
+          "name": "rocketFlameCoreFinal",
+          "fill": "#FDE68A",
+          "width": 96,
+          "height": 76
+        },
+        {
+          "type": "text",
+          "id": "XFIFl",
+          "x": 0,
+          "y": 6660,
+          "name": "finalTitle",
+          "fill": "#FFFFFF",
+          "content": "YOU'VE ARRIVED.",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 56,
+          "fontWeight": "bold",
+          "letterSpacing": 4
+        },
+        {
+          "type": "text",
+          "id": "UPSK9",
+          "x": 0,
+          "y": 6740,
+          "name": "finalSub",
+          "fill": "#FDE68A",
+          "content": "Thanks for the ride — let's build something together.",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 18,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "BOnzS",
+          "x": 604,
+          "y": 6800,
+          "name": "contactBtn",
+          "width": 232,
+          "height": 52,
+          "fill": "#F97316",
+          "cornerRadius": 26,
+          "children": [
+            {
+              "type": "text",
+              "id": "mDFkK",
+              "name": "contactBtnT",
+              "fill": "#FFFFFF",
+              "content": "Get in touch →",
+              "fontFamily": "Space Grotesk",
+              "fontSize": 16,
+              "fontWeight": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "BjOXp",
+          "x": 0,
+          "y": 6890,
+          "name": "footerText",
+          "fill": "#78350F",
+          "content": "© 2026 Pink Li· Frontend Engineer · Made with code & curiosity",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "TgJQt",
+          "x": 790,
+          "y": 665,
+          "name": "proxAnnotation",
+          "fill": "#3B4F8A",
+          "content": "↕ rocket scales with proximity to each project",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 10,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "ellipse",
+          "id": "jyGPO",
+          "x": -80,
+          "y": 1898,
+          "name": "saturnRingFront",
+          "fill": "#030308",
+          "width": 540,
+          "height": 50
+        },
+        {
+          "type": "ellipse",
+          "id": "Yo3fr",
+          "x": 300,
+          "y": 8050,
+          "name": "sunHighlight",
+          "fill": "#FEF3C7",
+          "width": 840,
+          "height": 600
+        },
+        {
+          "type": "ellipse",
+          "id": "Ig0rL",
+          "x": 1280,
+          "y": 4600,
+          "name": "marsRightPlanet",
+          "fill": "#7C3AED",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "type": "ellipse",
+          "id": "qSUml",
+          "x": 1310,
+          "y": 4630,
+          "name": "marsRightCrater",
+          "fill": "#6D28D9",
+          "width": 60,
+          "height": 55
+        },
+        {
+          "type": "text",
+          "id": "qtjAQ",
+          "x": 1280,
+          "y": 4820,
+          "name": "marsRightLbl",
+          "fill": "#A78BFA",
+          "content": "⛢  URANUS",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 11,
+          "fontWeight": "normal",
+          "letterSpacing": 2
+        },
+        {
+          "type": "frame",
+          "id": "iQB1Z",
+          "x": 719,
+          "y": 760,
+          "name": "trajLine",
+          "width": 2,
+          "height": 6300,
+          "fill": "#0D1B3E"
+        },
+        {
+          "type": "frame",
+          "id": "YyMpT",
+          "x": 1400,
+          "y": 300,
+          "name": "scrollBar",
+          "width": 4,
+          "height": 7000,
+          "fill": "#0D1B3E",
+          "cornerRadius": 2
+        },
+        {
+          "type": "ellipse",
+          "id": "izbn3",
+          "x": 1395,
+          "y": 300,
+          "name": "scrollThumb",
+          "fill": "#3B82F6",
+          "width": 14,
+          "height": 14
+        },
+        {
+          "type": "text",
+          "id": "Xb0ze",
+          "x": 752,
+          "y": 662,
+          "name": "rocketSizeLbl1",
+          "fill": "#3B4F8A",
+          "content": "×1",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 9,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "MOAMu",
+          "x": 763,
+          "y": 1990,
+          "name": "rocketSizeLbl2",
+          "fill": "#3B4F8A",
+          "content": "×1.6",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 9,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "JhI24",
+          "x": 769,
+          "y": 3770,
+          "name": "rocketSizeLbl3",
+          "fill": "#3B4F8A",
+          "content": "×2.0",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 9,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "jSku2",
+          "x": 778,
+          "y": 5560,
+          "name": "rocketSizeLbl4",
+          "fill": "#3B4F8A",
+          "content": "×2.5",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 9,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "p044k",
+          "x": 790,
+          "y": 7050,
+          "name": "rocketSizeLbl5",
+          "fill": "#9A3412",
+          "content": "×3.0",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 9,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "tzuDW",
+          "x": 0,
+          "y": 0,
+          "name": "navBar",
+          "width": 1440,
+          "height": 60,
+          "fill": "#03030B",
+          "padding": [
+            0,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "89Jnd",
+              "name": "navLinks",
+              "height": "fill_container",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Uqeh0",
+                  "name": "navL1",
+                  "fill": "#6B7BA4",
+                  "content": "work",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "ww088",
+                  "name": "navL2",
+                  "fill": "#6B7BA4",
+                  "content": "about",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "dzO5m",
+                  "name": "navL3",
+                  "fill": "#6B7BA4",
+                  "content": "contact",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "F5L98",
+          "x": 0,
+          "y": 1088,
+          "name": "earthProjName",
+          "fill": "#FFFFFF",
+          "content": "DESIGN SYSTEM v2",
+          "textAlign": "center",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "letterSpacing": 3
+        },
+        {
+          "type": "text",
+          "id": "iuggv",
+          "x": 65,
+          "y": 1845,
+          "name": "saturnProjName",
+          "fill": "#FFFFFF",
+          "content": "ANALYTICS DASHBOARD",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 15,
+          "fontWeight": "bold",
+          "letterSpacing": 2
+        },
+        {
+          "type": "text",
+          "id": "wMz8d",
+          "x": 1120,
+          "y": 3468,
+          "name": "jupiterProjName",
+          "fill": "#FFFFFF",
+          "content": "COLLAB EDITOR",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 15,
+          "fontWeight": "bold",
+          "letterSpacing": 2
+        },
+        {
+          "type": "text",
+          "id": "AKmh0",
+          "x": 20,
+          "y": 4240,
+          "name": "marsProjName",
+          "fill": "#FFFFFF",
+          "content": "MOBILE TRACKER",
+          "fontFamily": "Space Grotesk",
+          "fontSize": 15,
+          "fontWeight": "bold",
+          "letterSpacing": 2
+        },
+        {
+          "type": "frame",
+          "id": "5FuUl",
+          "x": 1105,
+          "y": 810,
+          "name": "earthHover",
+          "width": 295,
+          "height": 200,
+          "fill": "#040B18",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 9,
+          "padding": 20,
+          "children": [
+            {
+              "type": "text",
+              "id": "ithbT",
+              "name": "ehTitle",
+              "fill": "#E0E7FF",
+              "content": "DESIGN SYSTEM v2",
+              "fontFamily": "Space Grotesk",
+              "fontSize": 13,
+              "fontWeight": "bold",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "sdXit",
+              "name": "ehStack",
+              "fill": "#38BDF8",
+              "content": "React  ·  TypeScript  ·  Storybook  ·  Rollup",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "KhTmx",
+              "name": "ehDivider",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#1B3A6E"
+            },
+            {
+              "type": "text",
+              "id": "8aoZz",
+              "name": "ehValue",
+              "fill": "#7A8AB4",
+              "content": "\"60+ accessible components,\nproduction-ready from day 1.\"",
+              "lineHeight": 1.6,
+              "fontFamily": "Space Grotesk",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "PHqPb",
+              "name": "ehCta",
+              "width": 90,
+              "height": 26,
+              "fill": "#1B4FAD",
+              "cornerRadius": 13,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "DHtaj",
+                  "name": "ehCtaT",
+                  "fill": "#FFFFFF",
+                  "content": "Enter →",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 11,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LQ6cq",
+          "x": 462,
+          "y": 1715,
+          "name": "saturnHover",
+          "width": 295,
+          "height": 200,
+          "fill": "#080600",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 9,
+          "padding": 20,
+          "children": [
+            {
+              "type": "text",
+              "id": "uUCSc",
+              "name": "shTitle",
+              "fill": "#FDE68A",
+              "content": "ANALYTICS DASHBOARD",
+              "fontFamily": "Space Grotesk",
+              "fontSize": 13,
+              "fontWeight": "bold",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "Hb3FO",
+              "name": "shStack",
+              "fill": "#D4A840",
+              "content": "Next.js  ·  Tailwind  ·  Recharts  ·  Prisma",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "Kd8na",
+              "name": "shDivider",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#4A3800"
+            },
+            {
+              "type": "text",
+              "id": "VJ81Z",
+              "name": "shValue",
+              "fill": "#7A8AB4",
+              "content": "\"Real-time visibility into\nevery metric that matters.\"",
+              "lineHeight": 1.6,
+              "fontFamily": "Space Grotesk",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "QvzMn",
+              "name": "shCta",
+              "width": 90,
+              "height": 26,
+              "fill": "#4A3800",
+              "cornerRadius": 13,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "qJD16",
+                  "name": "shCtaT",
+                  "fill": "#FDE68A",
+                  "content": "Enter →",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 11,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pd9Fq",
+          "x": 50,
+          "y": 3315,
+          "name": "jupiterHover",
+          "width": 295,
+          "height": 200,
+          "fill": "#060300",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 9,
+          "padding": 20,
+          "children": [
+            {
+              "type": "text",
+              "id": "AcNP4",
+              "name": "jhTitle",
+              "fill": "#FB923C",
+              "content": "COLLAB EDITOR",
+              "fontFamily": "Space Grotesk",
+              "fontSize": 13,
+              "fontWeight": "bold",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "5LctR",
+              "name": "jhStack",
+              "fill": "#C17F3E",
+              "content": "Vue  ·  Node.js  ·  WebSockets  ·  Yjs CRDT",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "8Po69",
+              "name": "jhDivider",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#3D1F00"
+            },
+            {
+              "type": "text",
+              "id": "2WADN",
+              "name": "jhValue",
+              "fill": "#7A8AB4",
+              "content": "\"Conflict-free real-time editing\nat any concurrency.\"",
+              "lineHeight": 1.6,
+              "fontFamily": "Space Grotesk",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "6q4T1",
+              "name": "jhCta",
+              "width": 90,
+              "height": 26,
+              "fill": "#3D1F00",
+              "cornerRadius": 13,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zGyTJ",
+                  "name": "jhCtaT",
+                  "fill": "#FB923C",
+                  "content": "Enter →",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 11,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HhLyb",
+          "x": 318,
+          "y": 4115,
+          "name": "marsHover",
+          "width": 295,
+          "height": 200,
+          "fill": "#060100",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 9,
+          "padding": 20,
+          "children": [
+            {
+              "type": "text",
+              "id": "d9KG5",
+              "name": "mhTitle",
+              "fill": "#FB923C",
+              "content": "MOBILE TRACKER",
+              "fontFamily": "Space Grotesk",
+              "fontSize": 13,
+              "fontWeight": "bold",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "0Lb9M",
+              "name": "mhStack",
+              "fill": "#C1440E",
+              "content": "React Native  ·  SQLite  ·  Reanimated 3",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "5IDRh",
+              "name": "mhDivider",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#5C1A00"
+            },
+            {
+              "type": "text",
+              "id": "jLULU",
+              "name": "mhValue",
+              "fill": "#7A8AB4",
+              "content": "\"Habit loops with streaks\nthat actually stick.\"",
+              "lineHeight": 1.6,
+              "fontFamily": "Space Grotesk",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "DM60c",
+              "name": "mhCta",
+              "width": 90,
+              "height": 26,
+              "fill": "#5C1A00",
+              "cornerRadius": 13,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gq1vH",
+                  "name": "mhCtaT",
+                  "fill": "#FB923C",
+                  "content": "Enter →",
+                  "fontFamily": "Space Grotesk",
+                  "fontSize": 11,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
