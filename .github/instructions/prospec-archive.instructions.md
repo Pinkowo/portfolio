@@ -1,0 +1,116 @@
+---
+name: prospec-archive
+description: "Archive Changes | 歸檔變更 - Archive completed changes, generate summary, sync requirements to capability specs, and suggest Knowledge updates. Triggers: archive, clean up, wrap up, spec sync, 歸檔, 收尾, 整理完成, 規格同步"
+---
+
+# Prospec Archive Skill
+
+## Activation
+
+When triggered, briefly describe:
+- That you'll scan `.prospec/changes/` for completed changes
+- Each archived change will get a summary.md and be moved to `.prospec/archive/`
+- Affected modules will be identified and Knowledge update will be suggested
+
+## Startup Loading
+
+1. Read `.prospec/changes/` — scan all change directories and their `metadata.yaml`
+2. Read `prospec/CONSTITUTION.md` — prepare Constitution spot check
+3. **MANDATORY** — Read [`references/archive-format.md`](references/archive-format.md) for summary.md format specification
+4. **MANDATORY** — Read [`references/feature-spec-format.md`](references/feature-spec-format.md) for Feature Spec format
+5. **MANDATORY** — Read [`references/product-spec-format.md`](references/product-spec-format.md) for Product Spec format
+
+## Core Workflow
+
+### Phase 1: Scan and Confirm Targets
+
+Scan `.prospec/changes/` for changes with `status: verified` (default).
+Display a table of archivable changes:
+
+| Change Name | Status | Created | Modules |
+|-------------|--------|---------|---------|
+
+If no verified changes found, offer to archive changes with other statuses (with warning).
+Confirm with user before proceeding.
+
+### Phase 2: Generate Summary
+
+For each change to archive:
+1. Read `proposal.md` — extract User Story and acceptance criteria
+2. Read `delta-spec.md` — extract REQ IDs and affected modules
+3. Read `tasks.md` — calculate completion rate
+4. Check for `design-spec.md` and `interaction-spec.md` — if present, note design artifacts in summary
+5. Generate `summary.md` following `references/archive-format.md` specification
+
+### Phase 3: Execute Archive
+
+For each confirmed change:
+1. Create `.prospec/archive/{YYYY-MM-DD}-{change-name}/`
+2. Move all artifacts (proposal.md, plan.md, delta-spec.md, tasks.md, metadata.yaml, and design-spec.md + interaction-spec.md if present)
+3. Place generated summary.md in archive directory
+4. Update `metadata.yaml` to `status: archived`
+
+### Phase 3.5: Feature Spec Sync
+
+After archiving, sync User Stories and requirements to Feature Specs:
+
+1. Read the archived `proposal.md` — extract User Stories (As a / I want / So that + Acceptance Scenarios)
+2. Read the archived `delta-spec.md` — parse ADDED / MODIFIED / REMOVED sections with **Feature** and **Story** routing fields
+3. For each requirement, route by the `**Feature**` field:
+   - **ADDED (new Feature)**: Create `/specs/features/{feature-slug}.md` following `references/feature-spec-format.md`. Insert User Story (from proposal) + REQ (from delta-spec) together
+   - **ADDED (existing Feature)**: Merge User Story and REQ into the existing Feature Spec under the appropriate Story section
+   - **MODIFIED**: Replace-in-place — update the User Story and REQ to their latest versions in the Feature Spec. Record the change in Change History table only (no inline Before/After)
+   - **REMOVED**: Move the requirement to the Feature Spec's Deprecated Requirements section with removal reason and date
+4. Update each affected Feature Spec's Change History table
+5. Update frontmatter counters (`story_count`, `req_count`, `last_updated`)
+
+**Feature Spec Sync is non-fatal** — if it fails, archiving still succeeds. Warn the user to manually update Feature Specs.
+
+### Phase 3.6: Product Spec Regeneration
+
+After Feature Spec Sync completes:
+
+1. Scan all `/specs/features/*.md` — read frontmatter (`feature`, `status`, `story_count`)
+2. Extract P0 User Stories from each active Feature Spec for the Core Stories summary
+3. Regenerate `/specs/product.md` following `references/product-spec-format.md`
+
+**Product Spec Regeneration is non-fatal** — if it fails, Feature Spec Sync results are still valid.
+
+### Phase 4: Interactive Knowledge Update
+
+After archiving, identify and prompt for Knowledge update:
+
+1. Extract affected module names from delta-spec REQ ID prefixes (e.g., `REQ-SERVICES-010` → `services`, `REQ-CLI-005` → `cli`)
+2. Display specific affected modules:
+   ```
+   Affected modules from this change:
+   - [module-1]: [N] requirements changed
+   - [module-2]: [N] requirements changed
+   ```
+3. **Interactive prompt**: "Update Knowledge for these modules now? (Y/n)"
+   - **Yes**: Trigger `/prospec-knowledge-update` for listed modules
+   - **No**: Remind user to run `/prospec-knowledge-update` later
+4. Knowledge update is **non-fatal** — if it fails, archiving still succeeds
+
+**On failure:** Display: "Knowledge update failed for [module-name]. Run `/prospec-knowledge-update` manually."
+
+## NEVER
+
+- **NEVER** archive without user confirmation — accidental archiving moves active work out of changes/; recovery requires manual file moves
+- **NEVER** archive changes with `status: story` or `status: plan` — incomplete planning phases lack delta-spec and tasks, producing meaningless summaries and broken Spec Sync
+- **NEVER** skip summary.md generation — summary is the permanent record in the archive directory; without it, the change has no audit trail
+- **NEVER** delete original files instead of moving — deletion is irreversible; archive preserves all artifacts for future reference and debugging
+- **NEVER** modify the content of artifacts during archive — artifacts are the historical record; any modification falsifies the development history
+- **NEVER** let Knowledge update failure block archiving — Knowledge can always be updated later via `/prospec-knowledge-update`; blocking archiving risks losing verified state
+- **NEVER** archive without reading delta-spec.md — affected modules drive both Spec Sync and Knowledge Update; skipping produces orphaned requirements
+
+## Error Handling
+
+| Scenario | Action |
+|----------|--------|
+| No changes found in changes/ | Inform user that there are no changes to archive |
+| Change missing metadata.yaml | Skip that change, warn user about incomplete change directory |
+| Change missing delta-spec.md | Archive with partial summary, note missing spec in summary.md |
+| Archive directory already exists | Warn user, ask whether to overwrite or skip |
+| File move fails | Roll back that specific change's archive, report error, continue with others |
+

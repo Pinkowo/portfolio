@@ -1,0 +1,104 @@
+---
+name: prospec-ff
+description: "Fast-Forward Planning | 快轉規劃 - Generate complete planning artifacts in one pass (Story → Plan → Tasks). Triggers: fast-forward, ff, all at once, quick plan, 快轉, 一次搞定, 快速規劃, 直接規劃"
+---
+
+# Prospec Fast-Forward Skill
+
+## Activation
+
+When triggered, briefly describe:
+- That you'll generate all planning artifacts in one pass (Story → Plan → Tasks)
+- A quick 3-question interview will be conducted first
+- The metadata status will progress through story → plan → tasks
+
+## Startup Loading
+
+1. Read `prospec/ai-knowledge/_index.md` — identify related modules
+2. Read `prospec/CONSTITUTION.md` — prepare Constitution check
+3. **MANDATORY** — Load these three format references:
+   - `prospec-new-story/references/proposal-format.md`
+   - `prospec-plan/references/plan-format.md` + `delta-spec-format.md`
+   - `prospec-tasks/references/tasks-format.md`
+
+## What Makes FF Unique
+
+FF is not just "run three Skills sequentially." Its expert knowledge lies in:
+
+1. **Chained derivation**: Output of each phase automatically feeds the next — no manual handoff needed
+2. **Status lifecycle management**: metadata.yaml status progresses `story → plan → tasks` in sequence
+3. **Error recovery**: When any phase fails, preserve completed parts and offer recovery options
+4. **Quick interview**: Only 3 core questions (goal, role, acceptance criteria) — no deep exploration
+
+## Core Workflow
+
+### Phase 0: Quick Interview (3 questions to converge)
+
+Collect: Core goal (one sentence), primary user, key acceptance criteria (3-5 points).
+Derive kebab-case change name, confirm before proceeding.
+
+### Phase 1: Story Generation
+
+| Step | Action |
+|------|--------|
+| Scaffold | Create `.prospec/changes/[name]/` + `metadata.yaml`(status: story) + `proposal.md` |
+| Populate | Write User Story and ACs per proposal-format.md |
+| Check | Constitution check (3 most relevant principles) → PASS continue / FAIL pause |
+
+### Phase 2: Plan Generation
+
+| Step | Action |
+|------|--------|
+| Knowledge | Layer 1 (_index.md) → Layer 2 (related module READMEs) |
+| Scaffold | Create `plan.md` + `delta-spec.md`, update status → `plan` |
+| Populate | Write per plan-format.md and delta-spec-format.md |
+| Check | Constitution check → PASS continue / FAIL pause |
+
+### Phase 3: Tasks Generation
+
+| Step | Action |
+|------|--------|
+| Scaffold | Create `tasks.md`, update status → `tasks` |
+| Populate | Decompose by architecture layer per tasks-format.md |
+| Check | Test coverage check → PASS complete / WARN supplement |
+
+### Completion: Summary Report
+
+List all produced files, task statistics, suggest `/prospec-implement` as next step.
+
+## Error Recovery
+
+| Failed Phase | Preserved | Recovery Options |
+|-------------|-----------|-----------------|
+| Story fails | Change directory | Retry / switch to `/prospec-new-story` |
+| Plan fails | proposal.md | Retry / switch to `/prospec-plan` |
+| Tasks fails | proposal.md + plan.md + delta-spec.md | Retry / switch to `/prospec-tasks` |
+| Severe Constitution violation | All parts completed before failure | Pause FF, switch to single-phase Skill |
+
+## When to Use vs. Not to Use
+
+| Suitable for FF | Not suitable for FF |
+|----------------|-------------------|
+| Requirements clear, well-explored | Requirements vague, need discussion |
+| Similar feature done before | Major architectural changes |
+| Independent scope, low risk | Uncertain tech choices |
+| Tight schedule | First time with project |
+
+## NEVER
+
+- **NEVER** use FF when requirements are vague — guide user to `/prospec-explore` first
+- **NEVER** skip Constitution check at any phase — every phase must be checked
+- **NEVER** ask more than 3 questions in Phase 0 — FF prioritizes speed, use `/prospec-explore` for depth
+- **NEVER** duplicate format details already defined in other Skills — load corresponding references/ directly
+- **NEVER** skip metadata.yaml status progression — must follow story → plan → tasks sequence
+- **NEVER** discard completed phases on failure — error recovery is FF's core capability
+- **NEVER** skip Layer 2 knowledge loading — Plan phase must load related module AI Knowledge
+
+## Error Handling
+
+| Scenario | Action |
+|----------|--------|
+| Constitution severe violation at any phase | Pause FF, preserve completed parts, switch to single-phase Skill |
+| User changes requirements mid-flow | Restart from Phase 0 with new requirements |
+| Module Knowledge insufficient | Proceed with available info, note gaps in plan.md Risk Assessment |
+

@@ -1,0 +1,171 @@
+---
+name: prospec-verify
+description: "Verify Implementation | 驗證實作 - Run 5+1 dimension audit (tasks, spec compliance, constitution, spec↔knowledge consistency, tests, design consistency) and assign quality grade (S/A/B/C/D). Triggers: verify, check, audit, quality, done, grade, 驗證, 檢查, 品質, 做完了, 評分"
+---
+
+# Prospec Verify Skill
+
+## Activation
+
+When triggered, briefly describe:
+- That you'll perform a comprehensive audit of the implementation
+- All 5+1 verification dimensions will be checked (task completion, spec compliance, Constitution full audit, Spec ↔ Knowledge consistency, tests, and design consistency if UI scope applies)
+- A quality grade (S/A/B/C/D) with deployment recommendation will be provided
+
+## Startup Loading
+
+1. Read `.prospec/changes/[name]/tasks.md` — task completion status
+2. Read `.prospec/changes/[name]/plan.md` — design intent
+3. Read `.prospec/changes/[name]/delta-spec.md` — file specifications
+4. Read `.prospec/changes/[name]/proposal.md` — acceptance scenarios
+5. Read `prospec/CONSTITUTION.md` — for full audit
+6. Read `/specs/features/` — load relevant Feature Specs for consistency check
+7. Read `/specs/product.md` — understand product-level overview
+
+## Progressive Knowledge Loading Strategy
+
+| Layer | What to Load | When to Load | Budget |
+|-------|-------------|--------------|--------|
+| L0 | `_index.md` + `_conventions.md` + all planning docs + Feature Specs | At startup — full context for comprehensive audit | ≤ 1,500 tokens (knowledge) |
+| L1 | All affected module `README.md` (Recipe-First) | During Verification 2/5 and 4/5 — compare spec against knowledge | ≤ 400 tokens/module |
+| L2 | Source code files | During Verification 2/5 — verify implementation matches spec | On-demand |
+
+**Principles:** Verify loads more L1 than other skills (all affected modules, not just current task's module). L2 is loaded to find evidence for PASS/FAIL judgments.
+
+## Key Difference from Other Skills
+
+Other Skills only perform **spot checks** (3 most relevant principles).
+Verify Skill performs a **full audit** (every Constitution principle is checked).
+
+## Core Workflow
+
+### Verification 1/5: Task Completion
+
+Parse tasks.md, calculate completion rate by architecture layer.
+- 100% → PASS
+- < 100% → WARN (list uncompleted tasks)
+
+### Verification 2/5: Delta Spec Compliance
+
+Compare each file specification in delta-spec.md:
+- New files exist
+- Modified files contain expected changes
+- API endpoints match specifications
+- Type definitions are complete
+
+Mark each item PASS / WARN / FAIL.
+
+### Verification 3/5: Constitution Full Audit
+
+Check **every principle** in the Constitution:
+- Find **evidence** from implementation code and planning documents
+- Mark PASS / WARN / FAIL with score (1-5)
+- FAIL items must include specific remediation steps
+
+### Verification 4/5: Feature Spec ↔ Knowledge Consistency
+
+Compare Feature Spec requirements (`/specs/features/`) against AI Knowledge module descriptions (`prospec/ai-knowledge/modules/`):
+
+For each User Story and requirement in the relevant Feature Spec:
+- **PASS**: User Story behavior is reflected in the corresponding module README.md
+- **WARN**: Requirement exists but AI Knowledge description is vague or outdated
+- **FAIL**: Requirement exists in Feature Spec but has no corresponding description in AI Knowledge
+
+**Staleness Detection** (additional checks):
+- AI Knowledge describes functionality with no matching requirement in any Feature Spec → WARN (undocumented feature)
+- Implementation changed (delta-spec MODIFIED) but module README not updated → WARN + suggest `/prospec-knowledge-update`
+
+Output format:
+
+```
+| Feature | Story/REQ | Spec Says | Knowledge Says | Status |
+|---------|-----------|-----------|----------------|--------|
+| {feature} | US-NNN / REQ-XXX-NNN | [behavior] | [description] | PASS/WARN/FAIL |
+```
+
+If Feature Specs don't exist yet, skip this dimension with a note.
+
+**Spec Health** (additional quality metrics):
+
+| Metric | PASS | WARN |
+|--------|------|------|
+| **Density** | User Stories occupy ≥ 40% of Feature Spec content | REQ-dominated — Feature Spec reads like a technical checklist |
+| **Freshness** | `last_updated` within 30 days of latest related change | Stale — Feature Spec not updated after recent changes |
+| **Consistency** | Feature Spec and Knowledge describe the same behavior | Drift detected — Feature Spec and Knowledge disagree |
+
+### Verification 5/5: Test Verification
+
+Check if test files exist, suggest test execution commands.
+
+### Verification 6 (Conditional): Design Consistency
+
+**Skip this dimension if:** proposal.md has `ui_scope: none`, or no `design-spec.md` exists.
+
+When applicable, verify implementation matches design specifications:
+
+**Visual Spec Compliance:**
+- Read `design-spec.md` component definitions
+- Use platform adapter's Verify Phase guidelines to read precise values from design tool via MCP — MCP measurements are more accurate than markdown spec descriptions for visual properties
+- Check: color tokens, spacing, typography, component structure
+
+**Interaction Spec Compliance:**
+- Read `interaction-spec.md` flow definitions
+- Verify: screen states exist, transitions are implemented, gestures work as specified
+- Check: error states, loading states, empty states are all handled
+
+Mark each component PASS / WARN / FAIL:
+
+```
+| Component | Visual | Interaction | Status |
+|-----------|--------|-------------|--------|
+| [Name] | [match/mismatch details] | [match/mismatch details] | PASS/WARN/FAIL |
+```
+
+## Report Format
+
+```
+Quality Grade: [S / A / B / C / D]
+
+S (Excellent): All PASS, score >= 4.5
+A (Good): Mostly PASS, <= 2 WARN, no FAIL
+B (Fair): Some WARN, no FAIL
+C (Needs Improvement): Has FAIL (<= 2)
+D (Poor): Multiple FAIL (> 2)
+
+Deployment Recommendation:
+- S, A: Ready to deploy
+- B: Recommended to fix before deploying
+- C, D: Not recommended for deployment
+```
+
+## Knowledge Quality Gate
+
+Final Knowledge consistency summary:
+
+| Check Item | PASS | WARN |
+|------------|------|------|
+| Feature Spec ↔ Knowledge aligned | All User Stories and requirements reflected in module READMEs | Gaps identified in Verification 4/5 |
+| No stale Knowledge | Module READMEs match current implementation | READMEs outdated — suggest knowledge-update |
+| No undocumented features | All Knowledge entries have matching Feature Spec requirements | Features in Knowledge without requirements |
+| Spec Health metrics | Density, Freshness, and Consistency all PASS | One or more Spec Health metrics degraded |
+
+WARN items are deployment risks — recommend resolving before `/prospec-archive`.
+
+## NEVER
+
+- **NEVER** only spot-check the Constitution — Verify's core distinction from other Skills is full audit; spot-checking defeats the purpose of a dedicated verification phase
+- **NEVER** give PASS without supporting evidence — unsubstantiated PASS creates false confidence; evidence ensures the assessment is reproducible
+- **NEVER** give FAIL without remediation steps — a FAIL without fix guidance blocks the user; they need actionable next steps to resolve
+- **NEVER** skip any verification dimension — each dimension catches different defect classes; skipping one leaves a blind spot in quality assurance
+- **NEVER** continue verification when planning documents are missing — verifying against incomplete specs produces meaningless results and wastes tokens
+- **NEVER** make subjective assessments — subjective grades vary between sessions; evidence-based scoring ensures consistency across verifications
+- **NEVER** ignore FAIL items and give "ready to deploy" — FAIL items represent unmet specifications that will surface as production bugs
+
+## Error Handling
+
+| Scenario | Action |
+|----------|--------|
+| Planning documents missing | Confirm change has gone through Story → Plan → Tasks → Implement workflow |
+| Constitution file read fails | Skip Constitution audit, but clearly mark in report |
+| Implementation severely mismatches spec | Pause verification, suggest updating spec or fixing implementation |
+

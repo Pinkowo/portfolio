@@ -1,0 +1,136 @@
+---
+name: prospec-knowledge-update
+description: "Incremental Knowledge Update | 增量更新 AI Knowledge - Parse delta-spec.md to identify affected modules, scan source code, and update module README, _index.md, and module-map.yaml incrementally. Triggers: knowledge update, incremental update, sync knowledge, update docs, 增量更新, 同步知識, 更新文件"
+---
+
+# Prospec Knowledge Update Skill
+
+## Activation
+
+When triggered, briefly describe:
+- That you'll parse delta-spec.md to identify affected modules
+- Only affected modules will be scanned (not the entire codebase)
+- Module README.md (Recipe-First format), _index.md, and module-map.yaml will be updated incrementally
+- User-written sections (prospec:user-start/end) are always preserved
+
+## Startup Loading
+
+1. Read `.prospec/changes/[name]/delta-spec.md` — identify ADDED/MODIFIED/REMOVED requirements
+2. Read `prospec/ai-knowledge/_index.md` — current module index
+3. Read `prospec/ai-knowledge/module-map.yaml` — current dependency graph (if exists)
+4. Read `prospec/CONSTITUTION.md` — verify compliance constraints
+5. **MANDATORY** — Read [`references/knowledge-update-format.md`](references/knowledge-update-format.md) for output format
+
+## Token Budget Reminder
+
+Updated knowledge must respect these limits:
+
+| Layer | Content | Budget |
+|-------|---------|--------|
+| L1 | Each module `README.md` | ≤ 400 tokens / ≤ 100 lines per module |
+| L0 | `_index.md` + `_conventions.md` | ≤ 1,500 tokens total |
+
+After updating, verify the affected README stays within budget. Trim Key Files and Public API if needed — keep Modification Guide and Pitfalls intact.
+
+## Core Workflow
+
+### Phase 1: Parse Delta Spec
+
+Parse delta-spec.md to extract affected modules:
+
+| Section | Action | Example |
+|---------|--------|---------|
+| ADDED | Create new module README.md + add to _index.md + add to module-map.yaml | REQ-AUTH-001 → new `auth` module |
+| MODIFIED | Update existing module README.md with current implementation | REQ-SERVICES-010 → update `services` README |
+| REMOVED | Mark module as deprecated in README.md (do NOT delete) | REQ-LEGACY-001 → deprecate `legacy` module |
+
+Extract module names from REQ IDs: `REQ-{MODULE}-{NNN}` → module name is `{MODULE}` (lowercased).
+
+**Fallback (no delta-spec):** Ask user to specify module names manually.
+
+### Phase 2: Scan Affected Modules
+
+For each affected module:
+1. Locate module paths from `module-map.yaml` (or infer from module name)
+2. Scan source files (max 20 key files per module)
+3. Infer file descriptions from naming patterns (service.ts, test.ts, etc.)
+
+### Phase 3: Update Knowledge Files
+
+#### 3a: Module README.md (ADDED/MODIFIED) — Recipe-First Format
+
+For ADDED modules:
+- Create `prospec/ai-knowledge/modules/{module}/README.md`
+- Generate full README in Recipe-First format:
+
+```
+# {module_name}
+> One-line description
+
+<!-- prospec:auto-start -->
+## Key Files         (top 10 most important files)
+## Public API        (signature + 1-line, max 8 entries)
+## Dependencies      (depends_on with WHY, used_by)
+## Modification Guide (step-by-step for common changes)
+## Ripple Effects    (what breaks when this changes)
+## Pitfalls          (common mistakes, non-obvious constraints)
+<!-- prospec:auto-end -->
+<!-- prospec:user-start -->
+<!-- prospec:user-end -->
+```
+
+For MODIFIED modules:
+- Read existing README.md
+- Regenerate `prospec:auto-start/end` sections with updated information
+- **Preserve** all content within `prospec:user-start/end` markers via ContentMerger
+- Update Key Files table, Public API list, dependency info
+- **Refresh Modification Guide** — if implementation patterns changed, update guidance
+- **Refresh Ripple Effects** — if new dependencies were added, update impact list
+
+#### 3b: Module README.md (REMOVED)
+
+- Add deprecated banner at top of README.md
+- Do NOT delete the file or directory
+- Update status in _index.md to "Deprecated"
+
+#### 3c: _index.md
+
+Update the module table within `prospec:auto-start/end` markers using the current format:
+
+```
+| Module | Keywords | Status | Description | Rationale | Depends On |
+```
+
+- Add new modules (ADDED) with Rationale explaining why the module exists
+- Update descriptions and keywords (MODIFIED)
+- Mark as Deprecated (REMOVED)
+- Ensure Loading Rules section is present and accurate
+
+#### 3d: module-map.yaml
+
+- Add new module entries (ADDED)
+- Update relationships if changed (MODIFIED)
+- Remove module entries (REMOVED)
+- Skip if module-map.yaml doesn't exist
+
+## NEVER
+
+- **NEVER** overwrite content between `prospec:user-start/end` markers — always preserve user notes
+- **NEVER** delete module directories for REMOVED requirements — mark as deprecated only
+- **NEVER** scan the entire codebase — only scan modules identified from delta-spec
+- **NEVER** run without either delta-spec.md or manual module specification — one input source is required
+- **NEVER** skip _index.md update — the index must always reflect current module state
+- **NEVER** ignore module-map.yaml when it exists — dependency graph must stay in sync
+- **NEVER** generate api-surface.md, dependencies.md, or patterns.md — all info goes in README.md only
+- **NEVER** exceed 100 lines per module README — trim Key Files and Public API if needed; keep Modification Guide and Pitfalls intact
+
+## Error Handling
+
+| Scenario | Action |
+|----------|--------|
+| delta-spec.md not found | Ask user to specify modules manually or point to delta-spec path |
+| module-map.yaml not found | Skip module-map update, proceed with README and _index.md only |
+| Module directory doesn't exist (MODIFIED) | Treat as ADDED — create new module directory and README |
+| ContentMerger conflict | Prefer new auto content, always preserve user sections |
+| Source scan returns 0 files | Generate minimal README with module name only, warn user |
+| README exceeds 100 lines after update | Trim Key Files and Public API; keep Modification Guide and Pitfalls |
