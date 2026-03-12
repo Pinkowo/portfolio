@@ -1,0 +1,11 @@
+.env.local
+.env*.local
+.next/
+node_modules/
+dist/
+*.tsbuildinfo
+
+# AI tool local IDE configs (not portfolio content)
+.claude/
+.codex/
+.gemini/
