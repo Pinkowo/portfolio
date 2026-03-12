@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "resume": "Resume",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "subtitle": "Frontend Engineer · Crafting immersive experiences",
+    "scroll": "Scroll down to begin the journey"
+  },
+  "planet": {
+    "viewProject": "View Project",
+    "techStack": "Tech Stack",
+    "liveDemo": "Live Demo",
+    "github": "GitHub",
+    "noDemo": "No live demo"
+  },
+  "dialog": {
+    "close": "Close",
+    "visitSite": "Visit Site",
+    "viewCode": "View Code",
+    "iframeError": "Unable to load site preview"
+  },
+  "final": {
+    "title": "Is the journey over?",
+    "subtitle": "Or has it just begun.",
+    "contact": "Get in Touch"
+  },
+  "resume": {
+    "title": "Work Experience",
+    "skills": "Technical Skills"
+  },
+  "footer": {
+    "credit": "Handcrafted by a space traveler 🚀"
+  }
+}

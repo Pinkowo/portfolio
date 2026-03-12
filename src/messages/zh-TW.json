@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "首頁",
+    "projects": "作品",
+    "resume": "簡歷",
+    "contact": "聯絡"
+  },
+  "hero": {
+    "greeting": "你好，我是",
+    "subtitle": "前端工程師 · 熱愛打造沉浸式體驗",
+    "scroll": "向下滾動，開始旅程"
+  },
+  "planet": {
+    "viewProject": "查看專案",
+    "techStack": "技術棧",
+    "liveDemo": "線上 Demo",
+    "github": "GitHub",
+    "noDemo": "無線上 Demo"
+  },
+  "dialog": {
+    "close": "關閉",
+    "visitSite": "前往網站",
+    "viewCode": "查看程式碼",
+    "iframeError": "無法載入網站預覽"
+  },
+  "final": {
+    "title": "旅程結束了嗎？",
+    "subtitle": "還是，才剛開始。",
+    "contact": "與我聯繫"
+  },
+  "resume": {
+    "title": "工作經歷",
+    "skills": "技術能力"
+  },
+  "footer": {
+    "credit": "由太空旅行者親手打造 🚀"
+  }
+}

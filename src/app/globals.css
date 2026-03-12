@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Background */
+  --color-bg: #030308;
+  --color-nav-bg: #03030B;
+  --color-traj-line: #0D1B3E;
+
+  /* Text */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #6B7BA4;
+  --color-text-muted: #7A8AB4;
+
+  /* Accent */
+  --color-accent-blue: #3B82F6;
+  --color-accent-cyan: #06B6D4;
+  --color-accent-orange: #F97316;
+  --color-accent-yellow: #FDE68A;
+  --color-accent-indigo: #E0E7FF;
+  --color-accent-sky: #38BDF8;
+
+  /* Hover card */
+  --color-hover-divider: #1B3A6E;
+  --color-hover-cta-bg: #1B4FAD;
+
+  /* Planets */
+  --color-planet-earth: #1B4FAD;
+  --color-planet-saturn: #E8C97C;
+  --color-planet-moon: #94A3B8;
+  --color-planet-jupiter: #C17F3E;
+  --color-planet-mars: #C1440E;
+  --color-planet-neptune: #3B5BDB;
+  --color-planet-uranus: #7C3AED;
+
+  /* Sun */
+  --color-sun-body: #FCD34D;
+  --color-sun-glow: #FBBF24;
+  --color-sun-corona: #B45309;
+  --color-sun-corona-outer: #7C2D04;
+  --color-sun-highlight: #FEF3C7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #1B3A6E;
+  border-radius: 2px;
+}
