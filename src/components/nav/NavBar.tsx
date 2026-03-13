@@ -18,7 +18,7 @@ export function NavBar({ name }: { name: string }) {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 h-[60px] flex items-center justify-between px-8 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#03030B]/90 backdrop-blur-md border-b border-[#0D1B3E]'
+          ? 'bg-[#03030B]/80 backdrop-blur-md'
           : 'bg-transparent'
       }`}
     >
