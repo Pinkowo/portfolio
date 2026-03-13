@@ -8,34 +8,97 @@ import { ContactButton } from './ContactButton'
 
 interface SunFinalSectionProps {
   contactHref?: string
+  isLanding?: boolean
 }
 
+/**
+ * Sun section: corona + body centered at exactly 50% of a min-h-screen section.
+ * SpaceJourneyPage positions this wrapper at top: -SCENE_HEIGHT so that at
+ * scroll=100% (planetsY = SCENE_HEIGHT), the section fills the viewport and
+ * the sun center lands at 50vh = rocket level.
+ */
 export function SunFinalSection({ contactHref = 'mailto:hello@example.com' }: SunFinalSectionProps) {
   const t = useTranslations('final')
   const tFooter = useTranslations('footer')
-  const sunRef = useRef<HTMLDivElement>(null)
-  const sunInView = useInView(sunRef, { once: true, margin: '-20%' })
-  const sunControls = useAnimation()
+  const sectionRef = useRef<HTMLElement>(null)
+  const inView = useInView(sectionRef, { once: true, margin: '-15%' })
+  const controls = useAnimation()
 
   useEffect(() => {
-    if (sunInView) {
-      sunControls.start({
-        scale: [0.85, 1.05, 1],
-        opacity: [0, 1, 1],
-        transition: { duration: 1.2, ease: 'easeOut' },
-      })
+    if (inView) {
+      controls.start({ scale: [0.9, 1.05, 1], opacity: [0, 1, 1], transition: { duration: 1.2, ease: 'easeOut' } })
     }
-  }, [sunInView, sunControls])
+  }, [inView, controls])
 
   return (
-    <section className="relative flex flex-col items-center justify-end" style={{ minHeight: '140vh', paddingBottom: 0 }}>
-      {/* Text + button above sun */}
+    <section ref={sectionRef} className="relative" style={{ minHeight: '100vh' }}>
+
+      {/* ── Sun visual: corona + body centered at section 50% ──────────── */}
+      {/* Static positioning wrapper (keeps translateX(-50%) separate from Framer Motion scale) */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: 'calc(65% - 300px)',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: 600,
+          height: 600,
+          overflow: 'visible',
+        }}
+      >
+      <motion.div
+        animate={controls}
+        initial={{ opacity: 0, scale: 0.9 }}
+        style={{ width: 600, height: 600, overflow: 'visible' }}
+      >
+        {/* Corona outer — 1200px centered on sun center */}
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: 1200, height: 1200,
+            top: -300, left: -300,
+            background: 'radial-gradient(circle, #7C2D04 0%, transparent 60%)',
+          }}
+        />
+        {/* Corona mid */}
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: 900, height: 900,
+            top: -150, left: -150,
+            background: 'radial-gradient(circle, #B45309 0%, transparent 65%)',
+          }}
+        />
+        {/* Glow */}
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: 700, height: 700,
+            top: -50, left: -50,
+            background: 'radial-gradient(circle, #FBBF24 0%, transparent 70%)',
+          }}
+        />
+        {/* Sun body */}
+        <div
+          className="relative rounded-full"
+          style={{ width: 600, height: 600, background: '#FCD34D', boxShadow: '0 0 80px #FBBF24' }}
+        >
+          <div
+            className="absolute rounded-full"
+            style={{ width: '70%', height: '50%', background: 'rgba(254,243,199,0.3)', top: '10%', left: '15%' }}
+          />
+        </div>
+      </motion.div>
+      </div>
+
+      {/* ── Text + contact button — above the sun ──────────────────────── */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 flex flex-col items-center text-center mb-16 px-4"
+        className="absolute left-1/2 text-center pointer-events-auto"
+        style={{ top: '8%', transform: 'translateX(-50%)', width: '90%', maxWidth: 600 }}
       >
         <h2
           className="font-sans font-bold text-white mb-4"
@@ -47,44 +110,8 @@ export function SunFinalSection({ contactHref = 'mailto:hello@example.com' }: Su
         <ContactButton href={contactHref} />
       </motion.div>
 
-      {/* Sun */}
-      <motion.div
-        ref={sunRef}
-        animate={sunControls}
-        initial={{ opacity: 0, scale: 0.85 }}
-        className="relative flex items-end justify-center w-full overflow-hidden"
-        style={{ height: 600 }}
-      >
-        {/* Corona outer */}
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full"
-          style={{ width: 1200, height: 1200, background: 'radial-gradient(circle, #7C2D04 0%, transparent 60%)', transform: 'translateX(-50%) translateY(60%)' }}
-        />
-        {/* Corona */}
-        <div
-          className="absolute bottom-0 left-1/2 rounded-full"
-          style={{ width: 900, height: 900, background: 'radial-gradient(circle, #B45309 0%, transparent 65%)', transform: 'translateX(-50%) translateY(55%)' }}
-        />
-        {/* Glow */}
-        <div
-          className="absolute bottom-0 left-1/2 rounded-full"
-          style={{ width: 700, height: 700, background: 'radial-gradient(circle, #FBBF24 0%, transparent 70%)', transform: 'translateX(-50%) translateY(50%)' }}
-        />
-        {/* Sun body */}
-        <div
-          className="relative rounded-full z-10"
-          style={{ width: 600, height: 600, background: '#FCD34D', boxShadow: '0 0 60px #FBBF24', transform: 'translateY(50%)' }}
-        >
-          {/* Sun highlight */}
-          <div
-            className="absolute rounded-full"
-            style={{ width: '70%', height: '50%', background: 'rgba(254,243,199,0.3)', top: '10%', left: '15%' }}
-          />
-        </div>
-      </motion.div>
-
       {/* Footer */}
-      <p className="absolute bottom-4 text-[13px] font-sans" style={{ color: '#78350F' }}>
+      <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[13px] font-sans" style={{ color: '#78350F' }}>
         {tFooter('credit')}
       </p>
     </section>
