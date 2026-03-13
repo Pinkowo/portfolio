@@ -10,6 +10,7 @@ export const PLANETS_CONFIG: PlanetConfig[] = [
     size: 340,
     scrollThreshold: 0.12,
     hasRing: true,
+    side: 'left',
   },
   {
     key: 'moon',
@@ -18,7 +19,8 @@ export const PLANETS_CONFIG: PlanetConfig[] = [
     labelColor: '#CBD5E1',
     hoverBg: '#050606',
     size: 200,
-    scrollThreshold: 0.24,
+    scrollThreshold: 0.22,
+    side: 'right',
   },
   {
     key: 'jupiter',
@@ -27,7 +29,8 @@ export const PLANETS_CONFIG: PlanetConfig[] = [
     labelColor: '#F97316',
     hoverBg: '#060300',
     size: 400,
-    scrollThreshold: 0.38,
+    scrollThreshold: 0.32,
+    side: 'right',
   },
   {
     key: 'mars',
@@ -36,16 +39,8 @@ export const PLANETS_CONFIG: PlanetConfig[] = [
     labelColor: '#F97316',
     hoverBg: '#060100',
     size: 300,
-    scrollThreshold: 0.52,
-  },
-  {
-    key: 'neptune',
-    label: 'NEPTUNE',
-    color: '#3B5BDB',
-    labelColor: '#93C5FD',
-    hoverBg: '#010318',
-    size: 460,
-    scrollThreshold: 0.66,
+    scrollThreshold: 0.42,
+    side: 'left',
   },
   {
     key: 'uranus',
@@ -54,7 +49,38 @@ export const PLANETS_CONFIG: PlanetConfig[] = [
     labelColor: '#A78BFA',
     hoverBg: '#040106',
     size: 200,
-    scrollThreshold: 0.78,
+    scrollThreshold: 0.51,
+    side: 'right',
+  },
+  {
+    key: 'neptune',
+    label: 'NEPTUNE',
+    color: '#3B5BDB',
+    labelColor: '#93C5FD',
+    hoverBg: '#010318',
+    size: 460,
+    scrollThreshold: 0.60,
+    side: 'left',
+  },
+  {
+    key: 'venus',
+    label: 'VENUS',
+    color: '#D9A84E',
+    labelColor: '#FCD34D',
+    hoverBg: '#060400',
+    size: 180,
+    scrollThreshold: 0.70,
+    side: 'left',
+  },
+  {
+    key: 'mercury',
+    label: 'MERCURY',
+    color: '#A0A0A0',
+    labelColor: '#D1D5DB',
+    hoverBg: '#040404',
+    size: 120,
+    scrollThreshold: 0.79,
+    side: 'right',
   },
   {
     key: 'earth',
@@ -64,6 +90,7 @@ export const PLANETS_CONFIG: PlanetConfig[] = [
     hoverBg: '#040B18',
     size: 680,
     scrollThreshold: 0,
+    side: 'left',
   },
 ]
 
@@ -71,16 +98,17 @@ export const PLANET_MAP = Object.fromEntries(
   PLANETS_CONFIG.map((p) => [p.key, p])
 ) as Record<PlanetKey, PlanetConfig>
 
-/** Rocket size variants: [bodyW, bodyH] in px */
-export const ROCKET_SIZES = [
-  { w: 44, h: 88 },   // S (0–20%)
-  { w: 70, h: 140 },  // M (20–40%)
-  { w: 80, h: 158 },  // L (40–60%)
-  { w: 96, h: 190 },  // XL (60–80%)
-  { w: 120, h: 240 }, // Final (80–100%)
-] as const
+/** Scroll threshold where rocket scale-down begins (leaving Earth) */
+export const LAUNCH_THRESHOLD = 0.05
 
-export const ROCKET_THRESHOLDS = [0, 0.2, 0.4, 0.6, 0.8] as const
+/** Scroll threshold where rocket z-index switches for sun landing effect */
+export const LANDING_THRESHOLD = 0.92
+
+/** Total px the planets layer travels as scroll goes 0→1 */
+export const SCENE_HEIGHT = 12000
+
+/** Height of the invisible scroll-drive container in px */
+export const SCROLL_DRIVE_HEIGHT = 8000
 
 export const LOCALES = ['zh-TW', 'en'] as const
 export type Locale = (typeof LOCALES)[number]

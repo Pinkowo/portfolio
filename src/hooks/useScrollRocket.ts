@@ -1,51 +1,84 @@
 'use client'
 
-import { useScroll, useTransform, useMotionValue, useSpring, type MotionValue } from 'framer-motion'
-import { useEffect, useRef } from 'react'
-import { ROCKET_THRESHOLDS } from '@/lib/constants'
-import type { RocketSizeIndex } from '@/components/rocket/Rocket'
+import { useScroll, useTransform, useSpring, useMotionValueEvent, type MotionValue } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { SCENE_HEIGHT, LANDING_THRESHOLD, PLANETS_CONFIG } from '@/lib/constants'
+
+// Cosine-window smooth mapper: near each planet, speed drops to slowFactor×normal.
+// Uses a raised-cosine bell so there are NO sharp kinks — purely smooth acceleration curve.
+// Math guarantees:
+//   y(T_i) = T_i × SCENE_HEIGHT  (planet always aligns with rocket at its threshold)
+//   ∫ offset dp = 0               (y(1) = SCENE_HEIGHT exactly, no drift)
+function buildSmoothPlanetMapper(slowHalf: number, slowFactor: number) {
+  const thresholds = PLANETS_CONFIG
+    .filter(p => p.key !== 'earth')
+    .map(p => p.scrollThreshold)
+
+  return (progress: number): number => {
+    let offset = 0
+    for (const T of thresholds) {
+      const dist = progress - T
+      if (Math.abs(dist) < slowHalf) {
+        // Raised-cosine bell: 1 at centre, 0 at ±slowHalf — no kinks at boundary
+        const weight = (1 + Math.cos(Math.PI * dist / slowHalf)) / 2
+        // Pull progress toward T by (1−slowFactor) fraction → reduces local speed
+        offset += dist * weight * (1 - slowFactor)
+      }
+    }
+    return (progress - offset) * SCENE_HEIGHT
+  }
+}
+
+const planetMapper = buildSmoothPlanetMapper(0.07, 0.25)
 
 interface UseScrollRocketReturn {
   containerRef: React.RefObject<HTMLDivElement>
-  rocketY: MotionValue<number>
-  sizeIndex: RocketSizeIndex
+  planetsY: MotionValue<number>
+  rocketScale: MotionValue<number>
+  flameOpacity: MotionValue<number>
+  isLanding: boolean
   scrollProgress: MotionValue<number>
 }
 
 export function useScrollRocket(): UseScrollRocketReturn {
   const containerRef = useRef<HTMLDivElement>(null!)
+  const [isLanding, setIsLanding] = useState(false)
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   })
 
-  const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1])
+  // Smooth cosine slow-down near each planet, then spring for floaty feel
+  const rawPlanetsY = useTransform(scrollYProgress, planetMapper)
+  const planetsY = useSpring(rawPlanetsY, { stiffness: 120, damping: 28, restDelta: 0.5 })
 
-  // Convert scroll progress to a Y percentage (0% at Earth, 100% at Sun)
-  // We'll return this as a CSS transform value in the component
-  const rawY = useTransform(scrollYProgress, [0, 1], ['0%', '92%'])
-  const rocketY = useSpring(rawY as any, { stiffness: 80, damping: 20 }) as any
+  // Scale curve: big near Earth (1.8→1.0), constant mid-flight, modest grow near Sun (1.2)
+  const rocketScale = useTransform(
+    scrollYProgress,
+    [0, 0.08, 0.85, 1.0],
+    [1.8, 1.0, 1.0, 1.2]
+  )
 
-  // Compute size index based on current scroll progress
-  const sizeIndexValue = useMotionValue(0)
+  // Flame off only when fully on Earth/Sun, ignites the moment lift-off begins
+  const flameOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.01, 0.96, 1.0],
+    [0,  1,    1,   0]
+  )
 
-  useEffect(() => {
-    return scrollYProgress.on('change', (progress) => {
-      let idx = 0
-      for (let i = ROCKET_THRESHOLDS.length - 1; i >= 0; i--) {
-        if (progress >= ROCKET_THRESHOLDS[i]) {
-          idx = i
-          break
-        }
-      }
-      sizeIndexValue.set(idx)
-    })
-  }, [scrollYProgress, sizeIndexValue])
+
+  // Switch z-index when rocket crosses into sun landing zone
+  useMotionValueEvent(scrollYProgress, 'change', (progress) => {
+    setIsLanding(progress > LANDING_THRESHOLD)
+  })
 
   return {
     containerRef,
-    rocketY,
-    sizeIndex: sizeIndexValue.get() as RocketSizeIndex,
-    scrollProgress,
+    planetsY,
+    rocketScale,
+    flameOpacity,
+    isLanding,
+    scrollProgress: scrollYProgress,
   }
 }

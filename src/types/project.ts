@@ -6,6 +6,8 @@ export type PlanetKey =
   | 'mars'
   | 'neptune'
   | 'uranus'
+  | 'venus'
+  | 'mercury'
 
 export interface Project {
   id: string
@@ -34,4 +36,6 @@ export interface PlanetConfig {
   scrollThreshold: number
   /** Whether this planet has a ring */
   hasRing?: boolean
+  /** Which side the planet circle appears on (card is on the opposite side) */
+  side: 'left' | 'right'
 }
