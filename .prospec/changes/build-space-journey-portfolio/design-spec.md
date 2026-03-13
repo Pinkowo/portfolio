@@ -75,7 +75,7 @@
 
 - **Theme**: Deep space — near-black background (#030308), glowing celestial bodies
 - **Border radius**: Rounded for buttons (~8px); circles for planets
-- **Rocket scaling**: Rocket grows from Small (44×88) → Medium → Large → XL → Final (120×240) as scroll progresses, giving a sense of approaching the Sun
+- **Rocket scale**: Single size (70×140px) fixed at viewport center. Scale animation only at endpoints: scale 1.8→1.0 (leaving Earth), scale 1.0→2.2 (approaching Sun). Mid-journey always scale 1.0
 - **Trajectory**: A 2px vertical line (#0D1B3E) centered on page, acting as the flight path
 - **Parallax stars**: Scattered ellipses (#FFFFFF, #C7D2FE, #A5B4FC) of 1–3px as background starfield
 
@@ -140,29 +140,35 @@
 
 ### Rocket
 
-The rocket has 5 size variants representing growth during the journey:
+Single canonical size, fixed at viewport center. Scale is a CSS transform — no size variants.
 
-| Variant | Body Size | Usage |
-|---------|-----------|-------|
-| Small (S) | 44×88px | Near Earth |
-| Medium (M) | 70×140px | Mid journey |
-| Large (L) | 80×158px | Further out |
-| XL | 96×190px | Near Neptune |
-| Final | 120×240px | Near Sun |
+| Property | Value |
+|----------|-------|
+| Body size | 70×140px |
+| Position | `fixed; top: 50vh; left: 50vw; transform: translate(-50%, -50%)` |
+| Scale at Earth (scroll 0→8%) | 1.8 → 1.0 (shrinks as rocket leaves Earth) |
+| Scale mid-flight (scroll 8→85%) | 1.0 (constant, emphasises vastness of space) |
+| Scale near Sun (scroll 85→100%) | 1.0 → 2.2 (grows as rocket approaches Sun) |
 
-**Color tokens (same for all sizes):**
-- Body: #F1F5F9 (Small–Large) / #F8FAFC (Final)
-- Wings: #CBD5E1 (Small–Large) / #E2E8F0 (Final)
+**Color tokens:**
+- Body: #F1F5F9
+- Wings: #CBD5E1
 - Window: #06B6D4
 - Flame outer: #F97316
 - Flame core: #FDE68A
+
+**z-index:**
+- Normal flight: z-index 30 (above all planets)
+- Landing (scrollProgress > 0.92): z-index 20 (between sun corona z-18 and sun body z-22, visually "inside" the sun)
 
 **States:**
 
 | State | Visual Changes |
 |-------|---------------|
-| Traveling | Slight oscillation/tilt, flame animated (flicker) |
-| Landing (Sun) | Scale up + landing animation, flame grows |
+| Leaving Earth (0→8%) | Scale 1.8→1.0, rocket appears to shrink away from Earth |
+| Traveling (8→85%) | Scale 1.0, constant; planets layer moves down creating upward flight illusion |
+| Approaching Sun (85→100%) | Scale 1.0→2.2, rocket grows toward Sun |
+| Landing (scrollProgress > 0.92) | z-index drops to 20, rocket appears between sun corona and body layers |
 
 ---
 
@@ -174,15 +180,29 @@ The rocket has 5 size variants representing growth during the journey:
 - Project name text above or below planet (Space Grotesk 15–16px #FFFFFF)
 - Positioned alternating left/right of trajectory line
 
-**Planet sizes:**
-| Planet | Size | Notes |
-|--------|------|-------|
-| Moon | 200×200px | Grey #94A3B8, craters |
-| Mars | 300×300px | Red #C1440E, polar ice cap |
-| Saturn | 340×310px | Gold #E8C97C, ring 540px wide |
-| Jupiter | 400×360px | Brown #C17F3E, 3 banding stripes |
-| Neptune | 460×460px | Indigo #3B5BDB, ring behind |
-| Purple planet | 200×200px | #7C3AED, crater detail |
+**Planet sizes (scroll order: Earth → outer planets → inner planets → Sun):**
+| Planet | Size | Notes | Position |
+|--------|------|-------|---------|
+| Moon | 200×200px | Grey #94A3B8, craters | Right of trajectory |
+| Mars | 300×300px | Red #C1440E, polar ice cap | Left of trajectory |
+| Saturn | 340×310px | Gold #E8C97C, ring 540px wide | Right of trajectory |
+| Jupiter | 400×360px | Brown #C17F3E, 3 banding stripes | Left of trajectory |
+| Neptune | 460×460px | Indigo #3B5BDB, ring behind | Right of trajectory |
+| Uranus | 200×200px | #7C3AED, crater detail | Left of trajectory |
+| Venus | 180×180px | Gold #D9A84E, no surface detail | Left of trajectory |
+| Mercury | 120×120px | Grey #A0A0A0, no detail | Right of trajectory |
+
+**Planet label colors:**
+| Planet | Label Color |
+|--------|-------------|
+| Moon | #CBD5E1 |
+| Mars | #F97316 |
+| Saturn | #FDE68A |
+| Jupiter | #F97316 |
+| Neptune | #93C5FD |
+| Uranus | #A78BFA |
+| Venus | #FCD34D |
+| Mercury | #D1D5DB |
 
 **States:**
 
@@ -250,12 +270,18 @@ The rocket has 5 size variants representing growth during the journey:
 - Contact button below text: 232×52px, fill #F97316
 - Footer text: Space Grotesk 13px #78350F
 
+**z-index layers (for landing effect):**
+- Sun corona (background): z-index 18
+- Rocket (landing, scrollProgress > 0.92): z-index 20
+- Sun body + highlight (foreground): z-index 22
+- Rocket (normal flight): z-index 30
+
 **States:**
 
 | State | Visual Changes |
 |-------|---------------|
-| Rocket approaching | Rocket grows to Final size, flame intensifies |
-| Rocket landing | Landing animation plays on contact button area |
+| Rocket approaching | Rocket scale grows to 2.2×, flame intensifies |
+| Rocket landing | Rocket z-index drops to 20, visually passes through sun body layer |
 
 ---
 

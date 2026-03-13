@@ -1,154 +1,92 @@
-# Delta Spec: build-space-journey-portfolio
+# Delta Spec: build-space-journey-portfolio (v2 — Corrected Scroll Model)
 
 ## ADDED
 
-### REQ-SPACE-CANVAS-001: Space background with star field
+### REQ-SCROLL-001: 行星逆向捲動（reverse parallax）
 
 **Feature:** space-journey-portfolio
 **Story:** US-2
 
 **Description:**
-Full-page dark space canvas (#030308) with randomized star particles and a centered 2px vertical trajectory line connecting Earth to Sun.
+建立一個 fixed planets layer，當使用者往下 scroll 時，星球層往下移動（而非往上），製造火箭向上飛行的視覺幻覺。
 
 **Acceptance Criteria:**
-1. Background color is #030308 across entire viewport
-2. Stars render as small ellipses (#FFFFFF, #C7D2FE, #A5B4FC) scattered across canvas
-3. Trajectory line (2px, #0D1B3E) is centered horizontally and spans full scroll height
+1. Planets layer 為 `position: fixed`，套用 `translateY` = `scrollProgress * SCENE_HEIGHT`
+2. 往下 scroll → planets 往下 → 火箭（固定在中央）視覺上向上穿越星球
+3. 往上 scroll → planets 往上 → 火箭視覺上向下返回地球
 
 **Priority:** High
 
 ---
 
-### REQ-HERO-001: Earth hero section with developer intro
-
-**Feature:** space-journey-portfolio
-**Story:** US-1
-
-**Description:**
-First viewport shows an Earth illustration with developer name and subtitle overlaid, establishing identity before the journey begins.
-
-**Acceptance Criteria:**
-1. Earth circle (680px) with atmosphere glow, continents, ocean highlight renders at page top
-2. Developer name (Space Grotesk 80px #FFFFFF) and subtitle (16px #6B7BA4) are visible without scrolling
-3. Entry animation: Earth fades/scales in on page load (Framer Motion)
-
-**Priority:** High
-
----
-
-### REQ-ROCKET-001: Scroll-driven rocket animation
+### REQ-ROCKET-002: 火箭固定視窗中央
 
 **Feature:** space-journey-portfolio
 **Story:** US-2
 
 **Description:**
-A rocket travels from Earth to Sun as the user scrolls, growing in size across 5 thresholds to simulate approach toward the Sun.
+火箭在整個旅程中固定在視窗中央，不隨 scroll 移動。視覺上的移動感完全由 planets layer 的逆向移動製造。
 
 **Acceptance Criteria:**
-1. Rocket Y position is derived from `useScroll + useTransform` (scroll 0% → top, 100% → Sun)
-2. Rocket transitions through 5 sizes: S(44×88) → M(70×140) → L(80×158) → XL(96×190) → Final(120×240)
-3. Size transitions occur at 20%/40%/60%/80% scroll thresholds with smooth crossfade (300ms)
-4. Landing animation plays when scroll reaches ≥ 95%
+1. Rocket 為 `position: fixed; top: 50vh; left: 50vw; transform: translate(-50%, -50%)`
+2. Scroll 過程中火箭不移動，始終保持視窗中央
+3. 單一固定尺寸（70×140px），不依 scroll 進度切換尺寸
 
 **Priority:** High
-
----
-
-### REQ-PLANET-001: Planet project nodes with hover and click
-
-**Feature:** space-journey-portfolio
-**Story:** US-3
-
-**Description:**
-Seven planets positioned along the trajectory path, each representing a project. Hover reveals a preview card; click opens a detailed dialog.
-
-**Acceptance Criteria:**
-1. All 7 planets render with correct colors, sizes, and labels (JetBrains Mono)
-2. Project name (Space Grotesk 15px) is displayed on/near each planet
-3. Hover (desktop) shows HoverCard (295×200px) with title, tech stack, description, and CTA
-4. Click on planet (or HoverCard CTA) opens ProjectDialog
-5. Planet entry uses `whileInView` fade + scale animation (Framer Motion)
-
-**Priority:** High
-
----
-
-### REQ-DIALOG-001: Project detail dialog with iframe/image split
-
-**Feature:** space-journey-portfolio
-**Story:** US-3
-
-**Description:**
-A full-detail modal with 50/50 split: left shows embedded site (iframe) or screenshot; right shows project metadata and links.
-
-**Acceptance Criteria:**
-1. Dialog opens with Framer Motion AnimatePresence (opacity + translateY)
-2. Left panel: renders iframe if `demoUrl` exists; shows screenshot image otherwise
-3. Left panel: shows loading spinner while iframe loads; shows fallback screenshot on error
-4. Right panel: project name, description, tech stack tags, GitHub and Demo buttons
-5. Dialog closes on Esc, backdrop click, or close button
-
-**Priority:** High
-
----
-
-### REQ-NOTION-001: Notion API CMS integration
-
-**Feature:** space-journey-portfolio
-**Story:** US-4
-
-**Description:**
-Project data is sourced from a Notion Database via @notionhq/client, enabling content updates without code changes.
-
-**Acceptance Criteria:**
-1. `lib/notion.ts` fetches all projects from Notion Database using ISR (revalidate: 60s)
-2. Notion Database fields: Name, Description, Tech (multi-select), ScreenshotUrl, DemoUrl, GitHubUrl, Planet (select)
-3. Site reflects Notion changes after next revalidation cycle (≤ 60s)
-4. If Notion API is unavailable, site renders fallback static project data
-
-**Priority:** High
-
----
-
-### REQ-I18N-001: Bilingual zh-TW / en support
-
-**Feature:** space-journey-portfolio
-**Story:** US-5
-
-**Description:**
-Full bilingual support via next-intl with App Router `[locale]` routing. Browser language detection sets default locale.
-
-**Acceptance Criteria:**
-1. All UI strings (nav, hero, planets, dialog, contact) are defined in `messages/zh-TW.json` and `messages/en.json`
-2. Language toggle in NavBar switches locale without page reload
-3. Browser language `en*` defaults to English; all others default to zh-TW
-4. Active locale is reflected in URL path (`/en/` or `/zh-TW/`)
-
-**Priority:** High
-
----
-
-### REQ-SUN-001: Final Sun section with contact
-
-**Feature:** space-journey-portfolio
-**Story:** US-7
-
-**Description:**
-The journey ends at a large Sun illustration with a final title, subtitle, and contact button.
-
-**Acceptance Criteria:**
-1. Sun (multi-layer corona, body #FCD34D) renders at page bottom
-2. Final title (Space Grotesk 56px) and subtitle (18px #FDE68A) are visible near Sun
-3. Contact button (232×52px, #F97316) links to email or opens contact method
-
-**Priority:** Medium
 
 ---
 
 ## MODIFIED
 
-*(none — greenfield project)*
+### REQ-ROCKET-001: Scroll-driven 火箭動畫模型修正
+
+**Feature:** space-journey-portfolio
+**Story:** US-2
+
+**Before:**
+火箭 Y 座標從頁面 top 0% 移動到 92%，並隨 scroll 進度切換 5 種尺寸（S→M→L→XL→Final）。
+
+**After:**
+火箭固定在視窗中央不動，scale 隨距離感變化：
+- 停在地球（scroll 0→8%）：scale 1.8→1.0（離地縮小，遠離地球感）
+- 飛行中途（scroll 8%→85%）：scale 維持 1.0（一致的小尺寸，強調太空遼闊）
+- 接近太陽（scroll 85%→100%）：scale 1.0→2.2（靠近太陽放大，降落感）
+
+**Reason:**
+原始模型火箭往下移動，與「升空」直覺相反。改為固定中央 + 行星逆向移動，更符合太空旅程的沉浸感。多尺寸系統複雜且與新模型衝突，改為 scale transform 更簡潔。
+
+**Priority:** High
+
+---
+
+### REQ-SUN-001: 太陽降落 z-index 分層
+
+**Feature:** space-journey-portfolio
+**Story:** US-7
+
+**Before:**
+太陽為單一 z-index 層，火箭始終在太陽上方。
+
+**After:**
+太陽分為背層（corona）與前層（body + highlight），降落時火箭 z-index 切換至兩層之間，製造火箭「飛入太陽本體」的視覺效果，最終停在太陽上。
+
+- Sun corona：z-index 18
+- Rocket（一般）：z-index 30
+- Rocket（`scrollProgress > 0.92`）：z-index 20
+- Sun body + highlight：z-index 22
+
+**Reason:**
+US-2 acceptance scenario「landing animation plays when scroll reaches ≥ 95%」需要火箭穿越太陽的視覺層次，而非停在太陽表面上方。
+
+**Priority:** Medium
+
+---
 
 ## REMOVED
 
-*(none — greenfield project)*
+### REQ-ROCKET-SIZE-SYSTEM: 火箭多尺寸系統（S/M/L/XL/Final）
+
+**Reason:**
+新的固定中央 + scale transform 模型不再需要多個尺寸變體。`ROCKET_THRESHOLDS` 和 `sizeIndex` 整個移除，改由單一 `rocketScale` MotionValue 處理。
+
+---
