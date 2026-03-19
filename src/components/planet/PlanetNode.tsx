@@ -72,6 +72,39 @@ export function PlanetNode({ planet, project, side = 'right', onSelect }: Planet
                 <div className="absolute rounded-full opacity-60" style={{ width: '14%', height: '14%', background: '#64748B', top: '55%', left: '55%' }} />
               </>
             )}
+            {planet.key === 'uranus' && (
+              <>
+                {/* Tilted atmospheric bands */}
+                <div className="absolute opacity-30" style={{ width: '100%', height: '18%', background: '#5EEAD4', top: '28%', left: 0, borderRadius: '40%' }} />
+                <div className="absolute opacity-20" style={{ width: '100%', height: '12%', background: '#A7F3D0', top: '46%', left: 0, borderRadius: '40%' }} />
+                <div className="absolute opacity-25" style={{ width: '100%', height: '10%', background: '#5EEAD4', top: '62%', left: 0, borderRadius: '40%' }} />
+                {/* Polar glow — Uranus is tilted so poles face us */}
+                <div className="absolute rounded-full opacity-40" style={{ width: '45%', height: '45%', background: 'radial-gradient(circle, #A5F3FC 0%, transparent 70%)', top: '5%', left: '28%' }} />
+              </>
+            )}
+            {planet.key === 'venus' && (
+              <>
+                {/* Dense cloud swirls */}
+                <div className="absolute opacity-25" style={{ width: '90%', height: '20%', background: '#F5C842', top: '20%', left: '5%', borderRadius: '50%', transform: 'rotate(-8deg)' }} />
+                <div className="absolute opacity-20" style={{ width: '85%', height: '18%', background: '#E8A020', top: '38%', left: '8%', borderRadius: '50%', transform: 'rotate(5deg)' }} />
+                <div className="absolute opacity-25" style={{ width: '88%', height: '15%', background: '#F5C842', top: '55%', left: '6%', borderRadius: '50%', transform: 'rotate(-3deg)' }} />
+                {/* Bright highlight — thick atmosphere scatters light */}
+                <div className="absolute rounded-full opacity-35" style={{ width: '40%', height: '35%', background: 'radial-gradient(circle, #FEF3C7 0%, transparent 70%)', top: '8%', left: '12%' }} />
+              </>
+            )}
+            {planet.key === 'mercury' && (
+              <>
+                {/* Large impact craters */}
+                <div className="absolute rounded-full opacity-50" style={{ width: '28%', height: '28%', background: '#6B7280', top: '15%', left: '55%' }} />
+                <div className="absolute rounded-full opacity-40" style={{ width: '18%', height: '18%', background: '#6B7280', top: '55%', left: '18%' }} />
+                <div className="absolute rounded-full opacity-45" style={{ width: '22%', height: '22%', background: '#6B7280', top: '62%', left: '58%' }} />
+                {/* Small craters */}
+                <div className="absolute rounded-full opacity-35" style={{ width: '12%', height: '12%', background: '#9CA3AF', top: '35%', left: '25%' }} />
+                <div className="absolute rounded-full opacity-30" style={{ width: '10%', height: '10%', background: '#9CA3AF', top: '22%', left: '40%' }} />
+                {/* Terminator shadow — mercury is tidally half-dark */}
+                <div className="absolute rounded-full opacity-30" style={{ width: '50%', height: '100%', background: 'linear-gradient(to right, transparent, #1F2937)', top: 0, right: 0, borderRadius: '0 50% 50% 0' }} />
+              </>
+            )}
           </div>
           {/* Saturn ring — in front */}
           {planet.hasRing && (
