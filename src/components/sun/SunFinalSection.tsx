@@ -91,25 +91,6 @@ export function SunFinalSection({ contactHref = 'mailto:hello@example.com' }: Su
       </motion.div>
       </div>
 
-      {/* ── Text + contact button — above the sun ──────────────────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.6 }}
-        className="absolute left-1/2 text-center pointer-events-auto"
-        style={{ top: '8%', transform: 'translateX(-50%)', width: '90%', maxWidth: 600 }}
-      >
-        <h2
-          className="font-sans font-bold text-white mb-4"
-          style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
-        >
-          {t('title')}
-        </h2>
-        <p className="font-sans text-[#FDE68A] text-lg mb-8">{t('subtitle')}</p>
-        <ContactButton href={contactHref} />
-      </motion.div>
-
       {/* Footer */}
       <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[13px] font-sans" style={{ color: '#78350F' }}>
         {tFooter('credit')}

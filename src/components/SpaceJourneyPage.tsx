@@ -9,6 +9,7 @@ import { PlanetNode } from '@/components/planet/PlanetNode'
 import { ProjectDialog } from '@/components/dialog/ProjectDialog'
 import { Rocket } from '@/components/rocket/Rocket'
 import { SunFinalSection } from '@/components/sun/SunFinalSection'
+import { SunTextOverlay } from '@/components/sun/SunTextOverlay'
 import { PLANETS_CONFIG, SCENE_HEIGHT, SCROLL_DRIVE_HEIGHT } from '@/lib/constants'
 import { useScrollRocket } from '@/hooks/useScrollRocket'
 import type { Project } from '@/types/project'
@@ -39,18 +40,18 @@ export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPa
   // Sun center at 65vh; rocket base lands at Sun top edge (220px from viewport top).
   const orbitX = useTransform(
     scrollProgress,
-    [0.87, 0.91, 0.95, 0.98, 0.995, 1.0],
-    [0, 0, -420, -350, -200, 0],
+    [0.82, 0.86, 0.90, 0.93, 0.96, 0.98, 0.995, 1.0],
+    [0,    0,    -200, -400, -380, -280, -120,   0],
   )
   const orbitY = useTransform(
     scrollProgress,
-    [0.87, 0.91, 0.95, 0.98, 0.995, 1.0],
-    [0, 150, 100, -200, -210, -180],
+    [0.82, 0.86, 0.90, 0.93, 0.96, 0.98, 0.995, 1.0],
+    [0,    80,   150,  80,   -100, -180, -190,  -180],
   )
   const orbitRotate = useTransform(
     scrollProgress,
-    [0.87, 0.91, 0.95, 0.98, 1.0],
-    [0, 5, -28, -15, 0],
+    [0.82, 0.86, 0.90, 0.93, 0.96, 0.98, 1.0],
+    [0,    3,    8,    -25,  -18,  -8,   0],
   )
 
   const projectByPlanet = Object.fromEntries(projects.map((p) => [p.planet, p]))
@@ -77,7 +78,7 @@ export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPa
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          zIndex: isLanding ? 20 : 30,
+          zIndex: 2,
         }}
       >
         {/* Inner motion.div: orbital arc offset + bank rotation */}
@@ -90,9 +91,10 @@ export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPa
           All celestial bodies (Earth, planets, Sun) live here.
           Each planet top = calc(50vh - T*SCENE_HEIGHT - planet.size/2)
           so its center aligns with the rocket (50vh) at scroll = T.       */}
+      {/* ── Background layer (Earth + Sun) — BELOW rocket ────────────── */}
       <motion.div
         className="fixed top-0 left-0 right-0 pointer-events-none"
-        style={{ y: planetsY, zIndex: 10, height: 0, overflow: 'visible' }}
+        style={{ y: planetsY, zIndex: 1, height: 0, overflow: 'visible' }}
       >
         {/* ── Earth ──────────────────────────────────────────────────────
             Positioned so Earth's top edge is at 50vh (atmosphere level).
@@ -101,6 +103,24 @@ export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPa
           <HeroEarth name={name} />
         </div>
 
+        {/* ── Sun ────────────────────────────────────────────────────────
+            Wrapper at top: -SCENE_HEIGHT.
+            At scroll=100% (planetsY=SCENE_HEIGHT): wrapper lands at 0.
+            SunFinalSection has min-h-screen; sun circle centered at 50%.
+            → Sun center = 50vh = rocket level at scroll 100%.            */}
+        <div
+          className="absolute w-full pointer-events-auto"
+          style={{ top: `-${SCENE_HEIGHT}px` }}
+        >
+          <SunFinalSection contactHref={contactHref} isLanding={isLanding} />
+        </div>
+      </motion.div>
+
+      {/* ── Foreground layer (Planets + cards) — ABOVE rocket ────────── */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 pointer-events-none"
+        style={{ y: planetsY, zIndex: 40, height: 0, overflow: 'visible' }}
+      >
         {/* ── Planets ────────────────────────────────────────────────────
             top = calc(50vh - T*SCENE_HEIGHT - size/2) ensures planet
             center hits 50vh exactly when planetsY = T * SCENE_HEIGHT.     */}
@@ -118,22 +138,18 @@ export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPa
                 project={projectByPlanet[planet.key]}
                 side={side}
                 onSelect={setSelectedProject}
-
+                scrollProgress={scrollProgress}
               />
             </div>
           )
         })}
 
-        {/* ── Sun ────────────────────────────────────────────────────────
-            Wrapper at top: -SCENE_HEIGHT.
-            At scroll=100% (planetsY=SCENE_HEIGHT): wrapper lands at 0.
-            SunFinalSection has min-h-screen; sun circle centered at 50%.
-            → Sun center = 50vh = rocket level at scroll 100%.            */}
+        {/* ── Sun text + CTA — same position as SunFinalSection ─────── */}
         <div
           className="absolute w-full pointer-events-auto"
           style={{ top: `-${SCENE_HEIGHT}px` }}
         >
-          <SunFinalSection contactHref={contactHref} isLanding={isLanding} />
+          <SunTextOverlay contactHref={contactHref} />
         </div>
       </motion.div>
 

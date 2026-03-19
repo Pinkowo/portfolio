@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useTransform, type MotionValue } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useState, useEffect } from 'react'
 import { TechTag } from '@/components/ui/TechTag'
@@ -11,11 +11,12 @@ interface PlanetNodeProps {
   project?: Project
   side?: 'left' | 'right'
   onSelect: (project: Project) => void
+  scrollProgress: MotionValue<number>
 }
 
 export const PLANET_ROW_HEIGHT = 480
 
-export function PlanetNode({ planet, project, side = 'right', onSelect }: PlanetNodeProps) {
+export function PlanetNode({ planet, project, side = 'right', onSelect, scrollProgress }: PlanetNodeProps) {
   const t = useTranslations('planet')
   const [isMobile, setIsMobile] = useState(false)
 
@@ -30,14 +31,19 @@ export function PlanetNode({ planet, project, side = 'right', onSelect }: Planet
 
   const fromX = side === 'left' ? -300 : 300
 
+  // ── Scroll-driven entry animation ────────────────────────────────────
+  // Replaces whileInView (IntersectionObserver) which can't detect planets
+  // inside a fixed + CSS-transform parent. Use scrollProgress instead.
+  const T = planet.scrollThreshold
+  const enterProgress = useTransform(scrollProgress, [Math.max(0, T - 0.07), T], [0, 1])
+  const planetX = useTransform(enterProgress, [0, 1], [fromX, 0])
+  const planetScale = useTransform(enterProgress, [0, 1], [0.1, 1])
+  const planetOpacity = useTransform(enterProgress, [0, 1], [0, 1])
+
   // ── Planet circle ────────────────────────────────────────────────────
-  // whileInView once:false → flies in when entering viewport, flies out when leaving
   const planetCircle = (
     <motion.div
-      initial={{ x: fromX, scale: 0.1, opacity: 0 }}
-      whileInView={{ x: 0, scale: 1, opacity: 1 }}
-      viewport={{ once: false, margin: '500px 0px 500px 0px' }}
-      transition={{ type: 'spring', stiffness: 60, damping: 16, mass: 1.2 }}
+      style={{ x: planetX, scale: planetScale, opacity: planetOpacity }}
     >
       <motion.div
         animate={{ scale: 1, filter: 'drop-shadow(0 0 0px transparent)' }}
@@ -146,9 +152,10 @@ export function PlanetNode({ planet, project, side = 'right', onSelect }: Planet
       <div
         className="rounded-2xl border p-6 md:p-8 flex flex-col gap-4"
         style={{
-          background: planet.hoverBg,
+          background: planet.hoverBg + 'B3',
           borderColor: planet.labelColor + '33',
           boxShadow: `0 0 40px ${planet.color}18`,
+          backdropFilter: 'blur(12px)',
         }}
       >
         {/* Header */}

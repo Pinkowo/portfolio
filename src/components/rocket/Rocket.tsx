@@ -6,63 +6,141 @@ interface RocketProps {
   className?: string
 }
 
-const W = 70
-const H = 140
+const W = 70    // body width
+const H = 140   // body height
+
+const NOSE_H = 90
+const FIN_W = 44
+const FIN_H = 75
+const NOZ_W = 92
+const NOZ_H = 36
+const WIN_R = 36
+
+// Nozzle clip-path: top edge = body width (W), bottom edge = NOZ_W
+const NOZ_INSET = (((NOZ_W - W) / 2) / NOZ_W * 100).toFixed(2)
+const NOZ_CLIP = `polygon(${NOZ_INSET}% 0%, ${(100 - parseFloat(NOZ_INSET)).toFixed(2)}% 0%, 100% 100%, 0% 100%)`
 
 export function Rocket({ scale, flameOpacity, className }: RocketProps) {
-  const wingW = Math.round(W * 0.3)
-  const wingH = Math.round(H * 0.27)
-  const windowR = Math.round(W * 0.27)
-  const noseH = Math.round(H * 0.35)
-
-  // Flame dimensions
-  const flameW = Math.round(W * 0.78)
-  const flameH = Math.round(H * 0.38)
-  const coreW = Math.round(W * 0.48)
-  const coreH = Math.round(H * 0.28)
+  const flameW = 60
+  const flameH = 74
+  const coreW = 26
+  const coreH = 52
 
   return (
     <motion.div
       className={`relative flex flex-col items-center ${className ?? ''}`}
-      style={{ width: W, scale }}
+      style={{ width: W, scale, overflow: 'visible' }}
     >
-      {/* Nose */}
+      {/* ── Nose cone — sharp isoceles triangle ── */}
       <div
         style={{
-          width: W * 0.5,
-          height: noseH,
-          background: '#F1F5F9',
-          borderRadius: `${W * 0.25}px ${W * 0.25}px 0 0`,
+          width: W,
+          height: NOSE_H,
+          background: '#E2E8F0',
+          clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)',
+          marginBottom: -2,
         }}
       />
 
-      {/* Body + wings */}
-      <div className="relative flex items-center" style={{ width: W, height: H * 0.45 }}>
+      {/* ── Body + swept fins ── */}
+      <div style={{ position: 'relative', width: W, height: H }}>
+        {/* Left fin */}
         <div
-          className="absolute left-0"
-          style={{ width: wingW, height: wingH, background: '#CBD5E1', borderRadius: '4px 0 4px 4px', bottom: 0 }}
+          style={{
+            position: 'absolute',
+            right: '100%',
+            bottom: -25,
+            width: FIN_W,
+            height: FIN_H,
+            background: '#CBD5E1',
+            clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)',
+          }}
         />
+
+        {/* Body */}
         <div
-          className="mx-auto relative flex items-center justify-center"
-          style={{ width: W * 0.5, height: H * 0.45, background: '#F1F5F9' }}
+          style={{
+            width: W,
+            height: H,
+            background: '#F1F5F9',
+            borderRadius: 8,
+            position: 'relative',
+            overflow: 'hidden',
+          }}
         >
+          {/* Accent stripe */}
           <div
-            className="rounded-full"
-            style={{ width: windowR, height: windowR, background: '#06B6D4', boxShadow: '0 0 8px #06B6D4' }}
+            style={{
+              position: 'absolute',
+              top: 42,
+              left: 0,
+              right: 0,
+              height: 8,
+              background: '#CBD5E1',
+            }}
           />
+          {/* Window */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 20,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: WIN_R,
+              height: WIN_R,
+              borderRadius: '50%',
+              background: '#06B6D4',
+              boxShadow: '0 0 8px #06B6D4',
+            }}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                top: 5,
+                right: 5,
+                width: 10,
+                height: 10,
+                borderRadius: '50%',
+                background: '#E0F2FE',
+                opacity: 0.7,
+              }}
+            />
+          </div>
         </div>
+
+        {/* Right fin */}
         <div
-          className="absolute right-0"
-          style={{ width: wingW, height: wingH, background: '#CBD5E1', borderRadius: '0 4px 4px 4px', bottom: 0 }}
+          style={{
+            position: 'absolute',
+            left: '100%',
+            bottom: -25,
+            width: FIN_W,
+            height: FIN_H,
+            background: '#CBD5E1',
+            clipPath: 'polygon(0% 0%, 100% 100%, 0% 100%)',
+          }}
         />
       </div>
 
-      {/* Flame — fades out when landed on Earth or Sun */}
+      {/* ── Nozzle bell — trapezoid wider at base ── */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          width: NOZ_W,
+          height: NOZ_H,
+          background: '#94A3B8',
+          clipPath: NOZ_CLIP,
+          marginTop: -4,
+        }}
+      />
+
+      {/* ── Flame ── */}
       <motion.div
         style={{ opacity: flameOpacity, width: flameW, height: flameH }}
         className="relative flex items-start justify-center"
       >
-        {/* Outer glow — very slow, subtle breathing */}
+        {/* Outer glow */}
         <motion.div
           className="absolute"
           animate={{ scaleY: [1, 1.06, 0.97, 1.04, 1], opacity: [0.7, 0.9, 0.65, 0.85, 0.7] }}
@@ -88,7 +166,7 @@ export function Rocket({ scale, flameOpacity, className }: RocketProps) {
             transformOrigin: 'top center',
           }}
         />
-        {/* Inner core — brightest, least movement */}
+        {/* Inner core */}
         <motion.div
           className="absolute"
           animate={{ scaleY: [1, 1.04, 0.97, 1.02, 1] }}
