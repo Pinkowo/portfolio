@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import { useState, useEffect } from 'react'
 import { TechTag } from '@/components/ui/TechTag'
 import type { Project, PlanetConfig } from '@/types/project'
 
@@ -16,7 +17,16 @@ export const PLANET_ROW_HEIGHT = 480
 
 export function PlanetNode({ planet, project, side = 'right', onSelect }: PlanetNodeProps) {
   const t = useTranslations('planet')
-  const size = Math.min(planet.size, 280)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  const size = Math.min(planet.size, isMobile ? 110 : 280)
 
   const fromX = side === 'left' ? -300 : 300
 
@@ -204,7 +214,17 @@ export function PlanetNode({ planet, project, side = 'right', onSelect }: Planet
     </motion.div>
   ) : null
 
-  // ── Row: two equal 50vw columns ───────────────────────────────────────
+  // ── Mobile: vertical stack (planet → card) ────────────────────────────
+  if (isMobile) {
+    return (
+      <div className="w-full flex flex-col items-center gap-6 py-8">
+        <div className="flex justify-center">{planetCircle}</div>
+        {projectCard}
+      </div>
+    )
+  }
+
+  // ── Desktop: two equal 50vw columns ───────────────────────────────────
   return (
     <div className="w-full flex items-center" style={{ height: PLANET_ROW_HEIGHT }}>
       {/* Left column */}
