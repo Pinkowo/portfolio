@@ -12,6 +12,7 @@ import { SunFinalSection } from '@/components/sun/SunFinalSection'
 import { SunTextOverlay } from '@/components/sun/SunTextOverlay'
 import { PLANETS_CONFIG, SCENE_HEIGHT, SCROLL_DRIVE_HEIGHT } from '@/lib/constants'
 import { useScrollRocket } from '@/hooks/useScrollRocket'
+import { usePlanetKeyNav } from '@/hooks/usePlanetKeyNav'
 import type { Project } from '@/types/project'
 
 interface SpaceJourneyPageProps {
@@ -28,6 +29,7 @@ const EARTH_TOP_OFFSET = `calc(50vh - ${EARTH_RADIUS}px)`
 export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPageProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const { containerRef, planetsY, rocketScale, flameOpacity, isLanding, scrollProgress } = useScrollRocket()
+  usePlanetKeyNav(scrollProgress, containerRef)
 
   // ── Sun orbital arc ──────────────────────────────────────────────────
   // Half-circle orbit: rocket swings down-left past the Sun body,

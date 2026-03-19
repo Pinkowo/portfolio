@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useTransform, type MotionValue } from 'framer-motion'
+import { motion, useTransform, useSpring, type MotionValue } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useState, useEffect } from 'react'
 import { TechTag } from '@/components/ui/TechTag'
@@ -35,7 +35,9 @@ export function PlanetNode({ planet, project, side = 'right', onSelect, scrollPr
   // Replaces whileInView (IntersectionObserver) which can't detect planets
   // inside a fixed + CSS-transform parent. Use scrollProgress instead.
   const T = planet.scrollThreshold
-  const enterProgress = useTransform(scrollProgress, [Math.max(0, T - 0.07), T], [0, 1])
+  const rawEnter = useTransform(scrollProgress, [Math.max(0, T - 0.07), T], [0, 1])
+  // Spring gives the fly-in a bouncy feel (matches original whileInView spring)
+  const enterProgress = useSpring(rawEnter, { stiffness: 60, damping: 16, mass: 1.2 })
   const planetX = useTransform(enterProgress, [0, 1], [fromX, 0])
   const planetScale = useTransform(enterProgress, [0, 1], [0.1, 1])
   const planetOpacity = useTransform(enterProgress, [0, 1], [0, 1])

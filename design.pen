@@ -640,29 +640,7 @@
           "width": 70,
           "height": 140,
           "fill": "#F1F5F9",
-          "cornerRadius": 35
-        },
-        {
-          "type": "frame",
-          "id": "Cdyyz",
-          "x": 670,
-          "y": 749,
-          "name": "rocketWingLS",
-          "width": 18,
-          "height": 36,
-          "fill": "#CBD5E1",
-          "cornerRadius": 6
-        },
-        {
-          "type": "frame",
-          "id": "IvJpj",
-          "x": 755,
-          "y": 749,
-          "name": "rocketWingRS",
-          "width": 18,
-          "height": 36,
-          "fill": "#CBD5E1",
-          "cornerRadius": 6
+          "cornerRadius": 8
         },
         {
           "type": "ellipse",
@@ -703,29 +681,7 @@
           "width": 70,
           "height": 140,
           "fill": "#F1F5F9",
-          "cornerRadius": 35
-        },
-        {
-          "type": "frame",
-          "id": "t8GiT",
-          "x": 670,
-          "y": 2074,
-          "name": "rocketWingLM",
-          "width": 18,
-          "height": 36,
-          "fill": "#CBD5E1",
-          "cornerRadius": 6
-        },
-        {
-          "type": "frame",
-          "id": "jyaO5",
-          "x": 755,
-          "y": 2074,
-          "name": "rocketWingRM",
-          "width": 18,
-          "height": 36,
-          "fill": "#CBD5E1",
-          "cornerRadius": 6
+          "cornerRadius": 8
         },
         {
           "type": "ellipse",
@@ -1004,29 +960,7 @@
           "width": 70,
           "height": 140,
           "fill": "#F1F5F9",
-          "cornerRadius": 35
-        },
-        {
-          "type": "frame",
-          "id": "aCx8f",
-          "x": 670,
-          "y": 3854,
-          "name": "rocketWingLL",
-          "width": 18,
-          "height": 36,
-          "fill": "#CBD5E1",
-          "cornerRadius": 6
-        },
-        {
-          "type": "frame",
-          "id": "7hill",
-          "x": 755,
-          "y": 3854,
-          "name": "rocketWingRL",
-          "width": 18,
-          "height": 36,
-          "fill": "#CBD5E1",
-          "cornerRadius": 6
+          "cornerRadius": 8
         },
         {
           "type": "ellipse",
@@ -1143,29 +1077,7 @@
           "width": 70,
           "height": 140,
           "fill": "#F1F5F9",
-          "cornerRadius": 35
-        },
-        {
-          "type": "frame",
-          "id": "IDGmt",
-          "x": 670,
-          "y": 5644,
-          "name": "rocketWingLXL",
-          "width": 18,
-          "height": 36,
-          "fill": "#CBD5E1",
-          "cornerRadius": 6
-        },
-        {
-          "type": "frame",
-          "id": "7FIe4",
-          "x": 755,
-          "y": 5644,
-          "name": "rocketWingRXL",
-          "width": 18,
-          "height": 36,
-          "fill": "#CBD5E1",
-          "cornerRadius": 6
+          "cornerRadius": 8
         },
         {
           "type": "ellipse",
@@ -1259,29 +1171,7 @@
           "width": 70,
           "height": 140,
           "fill": "#F8FAFC",
-          "cornerRadius": 35
-        },
-        {
-          "type": "frame",
-          "id": "yGuPq",
-          "x": 670,
-          "y": 7134,
-          "name": "rocketWingLFinal",
-          "width": 18,
-          "height": 36,
-          "fill": "#E2E8F0",
-          "cornerRadius": 6
-        },
-        {
-          "type": "frame",
-          "id": "nme0U",
-          "x": 755,
-          "y": 7134,
-          "name": "rocketWingRFinal",
-          "width": 18,
-          "height": 36,
-          "fill": "#E2E8F0",
-          "cornerRadius": 6
+          "cornerRadius": 8
         },
         {
           "type": "ellipse",
@@ -1984,7 +1874,7 @@
           "width": 50,
           "height": 100,
           "fill": "#F1F5F9",
-          "cornerRadius": 25
+          "cornerRadius": 6
         },
         {
           "type": "ellipse",
@@ -1995,28 +1885,6 @@
           "fill": "#06B6D4",
           "width": 25,
           "height": 25
-        },
-        {
-          "type": "frame",
-          "id": "rbLhi",
-          "x": 684,
-          "y": 7601,
-          "name": "rocketApproachWingL",
-          "width": 13,
-          "height": 26,
-          "fill": "#CBD5E1",
-          "cornerRadius": 4
-        },
-        {
-          "type": "frame",
-          "id": "2vJsz",
-          "x": 745,
-          "y": 7601,
-          "name": "rocketApproachWingR",
-          "width": 13,
-          "height": 26,
-          "fill": "#CBD5E1",
-          "cornerRadius": 4
         },
         {
           "type": "ellipse",
@@ -2037,6 +1905,385 @@
           "fill": "#FDE68A",
           "width": 28,
           "height": 23
+        },
+        {
+          "type": "path",
+          "id": "j77iO",
+          "x": 685,
+          "y": 554,
+          "name": "rocketNoseS",
+          "geometry": "M35 0l35 92-70 0z",
+          "fill": "#E2E8F0",
+          "width": 70,
+          "height": 92
+        },
+        {
+          "type": "frame",
+          "id": "3ntGg",
+          "x": 685,
+          "y": 687,
+          "name": "rocketStripeS",
+          "width": 70,
+          "height": 8,
+          "fill": "#CBD5E1"
+        },
+        {
+          "type": "ellipse",
+          "id": "yRlfv",
+          "x": 714,
+          "y": 678,
+          "name": "rocketWinShineS",
+          "opacity": 0.5,
+          "fill": "#E0F2FE",
+          "width": 12,
+          "height": 12
+        },
+        {
+          "type": "path",
+          "id": "XsCHo",
+          "x": 641,
+          "y": 735,
+          "name": "rocketLFinS",
+          "geometry": "M44 0l-44 75 44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "v8LX1",
+          "x": 755,
+          "y": 735,
+          "name": "rocketRFinS",
+          "geometry": "M0 0l44 75-44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "oxs6R",
+          "x": 674,
+          "y": 782,
+          "name": "rocketNozS",
+          "geometry": "M11 0l70 0 11 36-92 0z",
+          "fill": "#94A3B8",
+          "width": 92,
+          "height": 36
+        },
+        {
+          "type": "path",
+          "id": "HqkZs",
+          "x": 685,
+          "y": 1879,
+          "name": "rocketNoseM",
+          "geometry": "M35 0l35 92-70 0z",
+          "fill": "#E2E8F0",
+          "width": 70,
+          "height": 92
+        },
+        {
+          "type": "frame",
+          "id": "6vgOZ",
+          "x": 685,
+          "y": 2012,
+          "name": "rocketStripeM",
+          "width": 70,
+          "height": 8,
+          "fill": "#CBD5E1"
+        },
+        {
+          "type": "ellipse",
+          "id": "dfza6",
+          "x": 714,
+          "y": 2003,
+          "name": "rocketWinShineM",
+          "opacity": 0.5,
+          "fill": "#E0F2FE",
+          "width": 12,
+          "height": 12
+        },
+        {
+          "type": "path",
+          "id": "4qapg",
+          "x": 641,
+          "y": 2060,
+          "name": "rocketLFinM",
+          "geometry": "M44 0l-44 75 44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "4AfGR",
+          "x": 755,
+          "y": 2060,
+          "name": "rocketRFinM",
+          "geometry": "M0 0l44 75-44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "g15BJ",
+          "x": 674,
+          "y": 2107,
+          "name": "rocketNozM",
+          "geometry": "M11 0l70 0 11 36-92 0z",
+          "fill": "#94A3B8",
+          "width": 92,
+          "height": 36
+        },
+        {
+          "type": "path",
+          "id": "Q5viw",
+          "x": 685,
+          "y": 3659,
+          "name": "rocketNoseL",
+          "geometry": "M35 0l35 92-70 0z",
+          "fill": "#E2E8F0",
+          "width": 70,
+          "height": 92
+        },
+        {
+          "type": "frame",
+          "id": "UEnRM",
+          "x": 685,
+          "y": 3792,
+          "name": "rocketStripeL",
+          "width": 70,
+          "height": 8,
+          "fill": "#CBD5E1"
+        },
+        {
+          "type": "ellipse",
+          "id": "jQiIN",
+          "x": 714,
+          "y": 3783,
+          "name": "rocketWinShineL",
+          "opacity": 0.5,
+          "fill": "#E0F2FE",
+          "width": 12,
+          "height": 12
+        },
+        {
+          "type": "path",
+          "id": "5cXzb",
+          "x": 641,
+          "y": 3840,
+          "name": "rocketLFinL",
+          "geometry": "M44 0l-44 75 44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "FYJDC",
+          "x": 755,
+          "y": 3840,
+          "name": "rocketRFinL",
+          "geometry": "M0 0l44 75-44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "plJqF",
+          "x": 674,
+          "y": 3887,
+          "name": "rocketNozL",
+          "geometry": "M11 0l70 0 11 36-92 0z",
+          "fill": "#94A3B8",
+          "width": 92,
+          "height": 36
+        },
+        {
+          "type": "path",
+          "id": "gbmeh",
+          "x": 685,
+          "y": 5449,
+          "name": "rocketNoseXL",
+          "geometry": "M35 0l35 92-70 0z",
+          "fill": "#E2E8F0",
+          "width": 70,
+          "height": 92
+        },
+        {
+          "type": "frame",
+          "id": "NyQNB",
+          "x": 685,
+          "y": 5582,
+          "name": "rocketStripeXL",
+          "width": 70,
+          "height": 8,
+          "fill": "#CBD5E1"
+        },
+        {
+          "type": "ellipse",
+          "id": "rcYvr",
+          "x": 714,
+          "y": 5573,
+          "name": "rocketWinShineXL",
+          "opacity": 0.5,
+          "fill": "#E0F2FE",
+          "width": 12,
+          "height": 12
+        },
+        {
+          "type": "path",
+          "id": "0UyqH",
+          "x": 641,
+          "y": 5630,
+          "name": "rocketLFinXL",
+          "geometry": "M44 0l-44 75 44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "Gdi6d",
+          "x": 755,
+          "y": 5630,
+          "name": "rocketRFinXL",
+          "geometry": "M0 0l44 75-44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "f27C5",
+          "x": 674,
+          "y": 5677,
+          "name": "rocketNozXL",
+          "geometry": "M11 0l70 0 11 36-92 0z",
+          "fill": "#94A3B8",
+          "width": 92,
+          "height": 36
+        },
+        {
+          "type": "path",
+          "id": "cuimC",
+          "x": 685,
+          "y": 6939,
+          "name": "rocketNoseFinal",
+          "geometry": "M35 0l35 92-70 0z",
+          "fill": "#E2E8F0",
+          "width": 70,
+          "height": 92
+        },
+        {
+          "type": "frame",
+          "id": "1Bx3s",
+          "x": 685,
+          "y": 7072,
+          "name": "rocketStripeFinal",
+          "width": 70,
+          "height": 8,
+          "fill": "#CBD5E1"
+        },
+        {
+          "type": "ellipse",
+          "id": "cyKxO",
+          "x": 714,
+          "y": 7063,
+          "name": "rocketWinShineFinal",
+          "opacity": 0.5,
+          "fill": "#E0F2FE",
+          "width": 12,
+          "height": 12
+        },
+        {
+          "type": "path",
+          "id": "TuFGQ",
+          "x": 641,
+          "y": 7120,
+          "name": "rocketLFinFinal",
+          "geometry": "M44 0l-44 75 44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "UJueQ",
+          "x": 755,
+          "y": 7120,
+          "name": "rocketRFinFinal",
+          "geometry": "M0 0l44 75-44 0z",
+          "fill": "#CBD5E1",
+          "width": 44,
+          "height": 75
+        },
+        {
+          "type": "path",
+          "id": "TjUqM",
+          "x": 674,
+          "y": 7167,
+          "name": "rocketNozFinal",
+          "geometry": "M11 0l70 0 11 36-92 0z",
+          "fill": "#94A3B8",
+          "width": 92,
+          "height": 36
+        },
+        {
+          "type": "path",
+          "id": "syhd3",
+          "x": 695,
+          "y": 7475,
+          "name": "rocketNoseApproach",
+          "geometry": "M25 0l25 66-50 0z",
+          "fill": "#E2E8F0",
+          "width": 50,
+          "height": 66
+        },
+        {
+          "type": "frame",
+          "id": "ilP1e",
+          "x": 695,
+          "y": 7562,
+          "name": "rocketStripeApproach",
+          "width": 50,
+          "height": 6,
+          "fill": "#CBD5E1"
+        },
+        {
+          "type": "path",
+          "id": "bh4Jq",
+          "x": 663,
+          "y": 7595,
+          "name": "rocketLFinApproach",
+          "geometry": "M32 0l-32 54 32 0z",
+          "fill": "#CBD5E1",
+          "width": 32,
+          "height": 54
+        },
+        {
+          "type": "path",
+          "id": "eh3dn",
+          "x": 745,
+          "y": 7595,
+          "name": "rocketRFinApproach",
+          "geometry": "M0 0l32 54-32 0z",
+          "fill": "#CBD5E1",
+          "width": 32,
+          "height": 54
+        },
+        {
+          "type": "path",
+          "id": "CL643",
+          "x": 687,
+          "y": 7636,
+          "name": "rocketNozApproach",
+          "geometry": "M8 0l50 0 8 26-66 0z",
+          "fill": "#94A3B8",
+          "width": 66,
+          "height": 26
         }
       ]
     },
