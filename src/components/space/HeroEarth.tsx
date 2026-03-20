@@ -49,9 +49,9 @@ export function HeroEarth({ name }: HeroEarthProps) {
         <p className="text-[#3B82F6] font-mono text-sm mb-2 tracking-widest uppercase">EARTH</p>
         <h1 className="text-white font-sans font-bold leading-none mb-3"
           style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
-          {t('greeting')} <span className="text-[#3B82F6]">{name}</span>
+          {t('greeting')} <span className="text-[#FCD34D]" style={{ textShadow: '0 0 12px rgba(252,211,77,0.5), 0 2px 4px rgba(0,0,0,0.5)' }}>{name}</span>
         </h1>
-        <p className="text-[#6B7BA4] font-sans text-base">{t('subtitle')}</p>
+        <p className="text-[#94A3B8] font-sans text-base" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>{t('subtitle')}</p>
       </motion.div>
 
       {/* Scroll hint */}

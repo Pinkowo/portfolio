@@ -1,14 +1,17 @@
-import { fetchProjects } from '@/lib/notion'
-import { SpaceJourneyPage } from '@/components/SpaceJourneyPage'
+import { fetchProjects } from "@/lib/notion";
+import { SpaceJourneyPage } from "@/components/SpaceJourneyPage";
 
-export const revalidate = 60
+export const revalidate = 60;
 
-// TODO: Replace with your name and contact email
-const DEVELOPER_NAME = 'Your Name'
-const CONTACT_HREF = 'mailto:hello@example.com'
+const DEVELOPER_NAME = "Yi-Hsin, Li";
+const CONTACT_HREF = "pinkowo057@gmail.com";
 
-export default async function HomePage() {
-  const projects = await fetchProjects()
+export default async function HomePage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const projects = await fetchProjects(locale);
 
   return (
     <SpaceJourneyPage
@@ -16,5 +19,5 @@ export default async function HomePage() {
       name={DEVELOPER_NAME}
       contactHref={CONTACT_HREF}
     />
-  )
+  );
 }

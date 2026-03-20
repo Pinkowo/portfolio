@@ -104,7 +104,7 @@ function extractFile(prop: any): string {
   return file?.file?.url ?? file?.external?.url ?? ''
 }
 
-export async function fetchProjects(): Promise<Project[]> {
+export async function fetchProjects(locale: string = 'zh-TW'): Promise<Project[]> {
   if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {
     return FALLBACK_PROJECTS
   }
@@ -123,8 +123,8 @@ export async function fetchProjects(): Promise<Project[]> {
         const props = page.properties
         return {
           id: page.id,
-          name: extractTitle(props['Name']),
-          desc: extractRichText(props['Description']),
+          name: (locale === 'en' && extractRichText(props['Name-en'])) || extractTitle(props['Name']),
+          desc: (locale === 'en' && extractRichText(props['Description-en'])) || extractRichText(props['Description']),
           tech: extractMultiSelect(props['Tech']),
           screenshotUrl: extractFile(props['Screenshot']) ?? extractUrl(props['ScreenshotUrl']) ?? '',
           demoUrl: extractUrl(props['DemoUrl']),
