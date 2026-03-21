@@ -32,8 +32,8 @@ export function PlanetNode({ planet, project, side = 'right', onSelect, scrollPr
   const fromX = side === 'left' ? -300 : 300
 
   // ── Scroll-driven entry animation ────────────────────────────────────
-  // Replaces whileInView (IntersectionObserver) which can't detect planets
-  // inside a fixed + CSS-transform parent. Use scrollProgress instead.
+  // Card and planet must be in position BEFORE the rocket arrives at T.
+  // Card appears first (T-0.12 → T-0.06), then planet flies in (T-0.07 → T).
   const T = planet.scrollThreshold
   const rawEnter = useTransform(scrollProgress, [Math.max(0, T - 0.07), T], [0, 1])
   // Spring gives the fly-in a bouncy feel (matches original whileInView spring)
@@ -41,6 +41,12 @@ export function PlanetNode({ planet, project, side = 'right', onSelect, scrollPr
   const planetX = useTransform(enterProgress, [0, 1], [fromX, 0])
   const planetScale = useTransform(enterProgress, [0, 1], [0.1, 1])
   const planetOpacity = useTransform(enterProgress, [0, 1], [0, 1])
+
+  // Card enters earlier than the planet so it's ready when the rocket arrives
+  const rawCardEnter = useTransform(scrollProgress, [Math.max(0, T - 0.12), Math.max(0, T - 0.05)], [0, 1])
+  const cardProgress = useSpring(rawCardEnter, { stiffness: 80, damping: 18 })
+  const cardX = useTransform(cardProgress, [0, 1], [side === 'left' ? 40 : -40, 0])
+  const cardOpacity = useTransform(cardProgress, [0, 1], [0, 1])
 
   // ── Planet circle ────────────────────────────────────────────────────
   const planetCircle = (
@@ -145,10 +151,7 @@ export function PlanetNode({ planet, project, side = 'right', onSelect, scrollPr
 
   const projectCard = project ? (
     <motion.div
-      initial={{ opacity: 0, x: side === 'left' ? 40 : -40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.55, delay: 0.08, ease: 'easeOut' }}
+      style={{ x: cardX, opacity: cardOpacity }}
       className="w-full px-6 md:px-10"
     >
       <div

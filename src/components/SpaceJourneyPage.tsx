@@ -5,7 +5,7 @@ import { motion, useTransform } from 'framer-motion'
 import { NavBar } from '@/components/nav/NavBar'
 import { StarField } from '@/components/space/StarField'
 import { HeroEarth } from '@/components/space/HeroEarth'
-import { PlanetNode } from '@/components/planet/PlanetNode'
+import { PlanetNode, PLANET_ROW_HEIGHT } from '@/components/planet/PlanetNode'
 import { ProjectDialog } from '@/components/dialog/ProjectDialog'
 import { Rocket } from '@/components/rocket/Rocket'
 import { SunFinalSection } from '@/components/sun/SunFinalSection'
@@ -126,11 +126,11 @@ export function SpaceJourneyPage({ projects, name }: SpaceJourneyPageProps) {
         style={{ y: planetsY, zIndex: 40, height: 0, overflow: 'visible' }}
       >
         {/* ── Planets ────────────────────────────────────────────────────
-            top = calc(50vh - T*SCENE_HEIGHT - size/2) ensures planet
-            center hits 50vh exactly when planetsY = T * SCENE_HEIGHT.     */}
+            top = calc(50vh - T*SCENE_HEIGHT - ROW_HEIGHT/2) ensures the
+            row center hits 50vh exactly when planetsY = T * SCENE_HEIGHT. */}
         {displayPlanets.map((planet) => {
           const side = planet.side
-          const topCss = `calc(50vh - ${planet.scrollThreshold * SCENE_HEIGHT + planet.size / 2}px)`
+          const topCss = `calc(50vh - ${planet.scrollThreshold * SCENE_HEIGHT + PLANET_ROW_HEIGHT / 2}px)`
           return (
             <div
               key={planet.key}
