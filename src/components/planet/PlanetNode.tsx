@@ -185,7 +185,7 @@ export function PlanetNode({ planet, project, side = 'right', onSelect, scrollPr
 
         {/* Description */}
         <p className="text-[#7A8AB4] font-sans text-sm leading-relaxed">
-          {project.desc}
+          {project.highlight}
         </p>
 
         {/* Links — button always toward screen center */}

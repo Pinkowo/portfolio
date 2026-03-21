@@ -1,10 +1,8 @@
 import { fetchProjects } from "@/lib/notion";
 import { SpaceJourneyPage } from "@/components/SpaceJourneyPage";
+import { PROFILE } from "@/lib/profile";
 
 export const revalidate = 60;
-
-const DEVELOPER_NAME = "Yi-Hsin, Li";
-const CONTACT_HREF = "pinkowo057@gmail.com";
 
 export default async function HomePage({
   params: { locale },
@@ -16,8 +14,7 @@ export default async function HomePage({
   return (
     <SpaceJourneyPage
       projects={projects}
-      name={DEVELOPER_NAME}
-      contactHref={CONTACT_HREF}
+      name={locale === 'en' ? PROFILE.nameEn : PROFILE.name}
     />
   );
 }

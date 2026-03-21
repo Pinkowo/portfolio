@@ -23,7 +23,8 @@ vi.mock('framer-motion', async () => {
 const mockProject: Project = {
   id: 'test-1',
   name: 'Test Project',
-  desc: 'A test project description',
+  highlight: 'A test project highlight',
+  content: 'A test project description',
   tech: ['React', 'TypeScript'],
   screenshotUrl: '',
   planet: 'mars',

@@ -39,7 +39,7 @@ export function HoverCard({ project, planet }: HoverCardProps) {
       </div>
       <div className="h-px bg-[#1B3A6E] my-2" />
       <p className="text-[#7A8AB4] font-sans text-[12px] leading-relaxed line-clamp-2 mb-3">
-        {project.desc}
+        {project.highlight}
       </p>
       <div
         className="inline-block px-3 py-1 rounded text-xs font-sans text-white"

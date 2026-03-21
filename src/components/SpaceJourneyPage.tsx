@@ -10,6 +10,8 @@ import { ProjectDialog } from '@/components/dialog/ProjectDialog'
 import { Rocket } from '@/components/rocket/Rocket'
 import { SunFinalSection } from '@/components/sun/SunFinalSection'
 import { SunTextOverlay } from '@/components/sun/SunTextOverlay'
+import { ContactDialogProvider } from '@/context/ContactDialogContext'
+import { ContactDialog } from '@/components/dialog/ContactDialog'
 import { PLANETS_CONFIG, SCENE_HEIGHT, SCROLL_DRIVE_HEIGHT } from '@/lib/constants'
 import { useScrollRocket } from '@/hooks/useScrollRocket'
 import { usePlanetKeyNav } from '@/hooks/usePlanetKeyNav'
@@ -18,7 +20,6 @@ import type { Project } from '@/types/project'
 interface SpaceJourneyPageProps {
   projects: Project[]
   name: string
-  contactHref?: string
 }
 
 // Earth radius = 340px. Position wrapper so Earth TOP EDGE is at 50vh,
@@ -26,7 +27,7 @@ interface SpaceJourneyPageProps {
 const EARTH_RADIUS = 340
 const EARTH_TOP_OFFSET = `calc(50vh - ${EARTH_RADIUS}px)`
 
-export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPageProps) {
+export function SpaceJourneyPage({ projects, name }: SpaceJourneyPageProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const { containerRef, planetsY, rocketScale, flameOpacity, isLanding, scrollProgress } = useScrollRocket()
   usePlanetKeyNav(scrollProgress, containerRef)
@@ -60,7 +61,8 @@ export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPa
   const displayPlanets = PLANETS_CONFIG.filter((p) => p.key !== 'earth')
 
   return (
-    // Invisible scroll-drive container — its height drives scrollYProgress
+    <ContactDialogProvider>
+    {/* Invisible scroll-drive container — its height drives scrollYProgress */}
     <div ref={containerRef} className="relative bg-[#030308]" style={{ minHeight: SCROLL_DRIVE_HEIGHT }}>
 
       {/* ── Static fixed layers ───────────────────────────────────────── */}
@@ -114,7 +116,7 @@ export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPa
           className="absolute w-full pointer-events-auto"
           style={{ top: `-${SCENE_HEIGHT}px` }}
         >
-          <SunFinalSection contactHref={contactHref} isLanding={isLanding} />
+          <SunFinalSection isLanding={isLanding} />
         </div>
       </motion.div>
 
@@ -151,15 +153,18 @@ export function SpaceJourneyPage({ projects, name, contactHref }: SpaceJourneyPa
           className="absolute w-full pointer-events-auto"
           style={{ top: `-${SCENE_HEIGHT}px` }}
         >
-          <SunTextOverlay contactHref={contactHref} />
+          <SunTextOverlay />
         </div>
       </motion.div>
 
       {/* ── Project dialog ───────────────────────────────────────────── */}
+      {/* ── Dialogs ──────────────────────────────────────────────────── */}
       <ProjectDialog
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
       />
+      <ContactDialog />
     </div>
+    </ContactDialogProvider>
   )
 }

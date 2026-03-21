@@ -4,11 +4,7 @@ import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { ContactButton } from './ContactButton'
 
-interface SunTextOverlayProps {
-  contactHref?: string
-}
-
-export function SunTextOverlay({ contactHref = 'mailto:hello@example.com' }: SunTextOverlayProps) {
+export function SunTextOverlay() {
   const t = useTranslations('final')
 
   return (
@@ -28,7 +24,7 @@ export function SunTextOverlay({ contactHref = 'mailto:hello@example.com' }: Sun
           {t('title')}
         </h2>
         <p className="font-sans text-[#FDE68A] text-lg mb-8">{t('subtitle')}</p>
-        <ContactButton href={contactHref} />
+        <ContactButton />
       </motion.div>
     </section>
   )

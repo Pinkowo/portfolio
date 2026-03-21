@@ -1,9 +1,9 @@
 {
   "nav": {
     "home": "Home",
-    "projects": "Projects",
+    "projects": "Back to Earth",
     "resume": "Resume",
-    "contact": "Contact"
+    "contact": "Contact Me"
   },
   "hero": {
     "greeting": "Hi, I'm",
@@ -32,7 +32,13 @@
     "title": "Work Experience",
     "skills": "Technical Skills"
   },
-  "footer": {
-    "credit": "Handcrafted by a space traveler 🚀"
+  "contactDialog": {
+    "title": "Contact Me",
+    "email": "Email",
+    "phone": "Phone",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "resume": "Resume",
+    "copied": "Copied!"
   }
 }

@@ -12,7 +12,8 @@ const FALLBACK_PROJECTS: Project[] = [
   {
     id: 'fallback-saturn',
     name: 'Analytics Dashboard',
-    desc: 'Real-time data visualization platform with customizable widgets, multi-source data ingestion, and role-based access control.',
+    highlight: 'Real-time data visualization platform with customizable widgets, multi-source data ingestion, and role-based access control.',
+    content: '',
     tech: ['Next.js', 'Tailwind', 'Recharts', 'Prisma'],
     screenshotUrl: '',
     planet: 'saturn',
@@ -20,7 +21,8 @@ const FALLBACK_PROJECTS: Project[] = [
   {
     id: 'fallback-moon',
     name: 'Design System v2',
-    desc: '60+ accessible UI components with comprehensive Storybook documentation, dark mode, and TypeScript-first API.',
+    highlight: '60+ accessible UI components with comprehensive Storybook documentation, dark mode, and TypeScript-first API.',
+    content: '',
     tech: ['React', 'TypeScript', 'Storybook', 'Rollup'],
     screenshotUrl: '',
     planet: 'moon',
@@ -28,7 +30,8 @@ const FALLBACK_PROJECTS: Project[] = [
   {
     id: 'fallback-jupiter',
     name: 'Collab Editor',
-    desc: 'Conflict-free real-time collaborative document editor supporting any concurrency level using CRDT algorithms.',
+    highlight: 'Conflict-free real-time collaborative document editor supporting any concurrency level using CRDT algorithms.',
+    content: '',
     tech: ['Vue', 'Node.js', 'WebSockets', 'Yjs'],
     screenshotUrl: '',
     planet: 'jupiter',
@@ -36,7 +39,8 @@ const FALLBACK_PROJECTS: Project[] = [
   {
     id: 'fallback-mars',
     name: 'Mobile Tracker',
-    desc: 'Cross-platform habit tracker with streak analytics, reminders, and smooth gesture-driven interactions.',
+    highlight: 'Cross-platform habit tracker with streak analytics, reminders, and smooth gesture-driven interactions.',
+    content: '',
     tech: ['React Native', 'SQLite', 'Reanimated 3'],
     screenshotUrl: '',
     planet: 'mars',
@@ -44,7 +48,8 @@ const FALLBACK_PROJECTS: Project[] = [
   {
     id: 'fallback-uranus',
     name: 'E-Commerce Platform',
-    desc: 'Headless commerce solution with server components, edge caching, and sub-100ms time-to-interactive.',
+    highlight: 'Headless commerce solution with server components, edge caching, and sub-100ms time-to-interactive.',
+    content: '',
     tech: ['Next.js', 'Shopify', 'GraphQL', 'Vercel'],
     screenshotUrl: '',
     planet: 'uranus',
@@ -52,7 +57,8 @@ const FALLBACK_PROJECTS: Project[] = [
   {
     id: 'fallback-neptune',
     name: 'DevOps Pipeline',
-    desc: 'Zero-downtime CI/CD pipeline with automated testing, canary deployments, and Slack alerting.',
+    highlight: 'Zero-downtime CI/CD pipeline with automated testing, canary deployments, and Slack alerting.',
+    content: '',
     tech: ['Docker', 'GitHub Actions', 'Terraform', 'AWS'],
     screenshotUrl: '',
     planet: 'neptune',
@@ -60,7 +66,8 @@ const FALLBACK_PROJECTS: Project[] = [
   {
     id: 'fallback-venus',
     name: 'AI Writing Tool',
-    desc: 'Context-aware writing assistant with streaming responses, custom personas, and usage analytics.',
+    highlight: 'Context-aware writing assistant with streaming responses, custom personas, and usage analytics.',
+    content: '',
     tech: ['Next.js', 'OpenAI API', 'Supabase', 'Vercel AI'],
     screenshotUrl: '',
     planet: 'venus',
@@ -68,7 +75,8 @@ const FALLBACK_PROJECTS: Project[] = [
   {
     id: 'fallback-mercury',
     name: 'Portfolio Site',
-    desc: 'This very site — a scroll-driven space journey built with Framer Motion, Next.js, and Notion as CMS.',
+    highlight: 'This very site — a scroll-driven space journey built with Framer Motion, Next.js, and Notion as CMS.',
+    content: '',
     tech: ['Next.js', 'Framer Motion', 'Tailwind', 'Notion'],
     screenshotUrl: '',
     planet: 'mercury',
@@ -124,8 +132,9 @@ export async function fetchProjects(locale: string = 'zh-TW'): Promise<Project[]
         return {
           id: page.id,
           name: (locale === 'en' && extractRichText(props['Name-en'])) || extractTitle(props['Name']),
-          desc: (locale === 'en' && extractRichText(props['Description-en'])) || extractRichText(props['Description']),
-          tech: extractMultiSelect(props['Tech']),
+          highlight: (locale === 'en' && extractRichText(props['Highlight-en'])) || extractRichText(props['Highlight']),
+          content: (locale === 'en' && extractRichText(props['Content-en'])) || extractRichText(props['Content']),
+          tech: extractRichText(props['TechStack']).split('·').map((s: string) => s.trim()).filter(Boolean),
           screenshotUrl: extractFile(props['Screenshot']) ?? extractUrl(props['ScreenshotUrl']) ?? '',
           demoUrl: extractUrl(props['DemoUrl']),
           githubUrl: extractUrl(props['GitHubUrl']),

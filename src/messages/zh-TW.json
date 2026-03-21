@@ -1,9 +1,9 @@
 {
   "nav": {
     "home": "首頁",
-    "projects": "作品",
+    "projects": "回到地球",
     "resume": "簡歷",
-    "contact": "聯絡"
+    "contact": "聯絡我"
   },
   "hero": {
     "greeting": "你好，我是",
@@ -32,7 +32,13 @@
     "title": "工作經歷",
     "skills": "技術能力"
   },
-  "footer": {
-    "credit": "由太空旅行者親手打造 🚀"
+  "contactDialog": {
+    "title": "聯絡我",
+    "email": "電子郵件",
+    "phone": "電話",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "resume": "履歷",
+    "copied": "已複製！"
   }
 }

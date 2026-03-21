@@ -12,7 +12,8 @@ export type PlanetKey =
 export interface Project {
   id: string
   name: string
-  desc: string
+  highlight: string
+  content: string
   tech: string[]
   screenshotUrl: string
   demoUrl?: string

@@ -2,18 +2,16 @@
 
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import { useContactDialog } from '@/context/ContactDialogContext'
 
-interface ContactButtonProps {
-  href: string
-}
-
-export function ContactButton({ href }: ContactButtonProps) {
+export function ContactButton() {
   const t = useTranslations('final')
+  const { open } = useContactDialog()
 
   return (
-    <motion.a
-      href={href}
-      whileHover={{ scale: 1.02, brightness: 1.1 } as any}
+    <motion.button
+      onClick={open}
+      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.15 }}
       className="inline-flex items-center justify-center font-sans text-white font-semibold rounded-lg"
@@ -21,6 +19,6 @@ export function ContactButton({ href }: ContactButtonProps) {
       id="contact"
     >
       {t('contact')}
-    </motion.a>
+    </motion.button>
   )
 }

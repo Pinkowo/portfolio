@@ -92,7 +92,7 @@ export function ProjectDialog({ project, onClose }: ProjectDialogProps) {
                 </button>
               </div>
 
-              <p className="text-[#7A8AB4] text-sm leading-relaxed mb-5">{project.desc}</p>
+              <p className="text-[#7A8AB4] text-sm leading-relaxed mb-5 whitespace-pre-line">{project.content}</p>
 
               {project.tech.length > 0 && (
                 <div className="mb-5">

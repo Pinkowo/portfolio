@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { LanguageToggle } from './LanguageToggle'
+import { useContactDialog } from '@/context/ContactDialogContext'
 
 export function NavBar({ name }: { name: string }) {
   const [scrolled, setScrolled] = useState(false)
   const t = useTranslations('nav')
+  const { open: openContact } = useContactDialog()
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20)
@@ -26,12 +28,12 @@ export function NavBar({ name }: { name: string }) {
         {name}
       </span>
       <div className="flex items-center gap-6">
-        <a href="#projects" className="hidden sm:block text-sm text-[#6B7BA4] hover:text-white transition-colors">
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hidden sm:block text-sm text-[#6B7BA4] hover:text-white transition-colors">
           {t('projects')}
-        </a>
-        <a href="#contact" className="hidden sm:block text-sm text-[#6B7BA4] hover:text-white transition-colors">
+        </button>
+        <button onClick={openContact} className="hidden sm:block text-sm text-[#6B7BA4] hover:text-white transition-colors">
           {t('contact')}
-        </a>
+        </button>
         <LanguageToggle />
       </div>
     </nav>
