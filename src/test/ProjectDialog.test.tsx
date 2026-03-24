@@ -26,7 +26,7 @@ const mockProject: Project = {
   highlight: 'A test project highlight',
   content: 'A test project description',
   tech: ['React', 'TypeScript'],
-  screenshotUrl: '',
+  screenshotUrls: [],
   planet: 'mars',
 }
 

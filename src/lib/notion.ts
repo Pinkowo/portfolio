@@ -15,7 +15,7 @@ const FALLBACK_PROJECTS: Project[] = [
     highlight: 'Real-time data visualization platform with customizable widgets, multi-source data ingestion, and role-based access control.',
     content: '',
     tech: ['Next.js', 'Tailwind', 'Recharts', 'Prisma'],
-    screenshotUrl: '',
+    screenshotUrls: [],
     planet: 'saturn',
   },
   {
@@ -24,7 +24,7 @@ const FALLBACK_PROJECTS: Project[] = [
     highlight: '60+ accessible UI components with comprehensive Storybook documentation, dark mode, and TypeScript-first API.',
     content: '',
     tech: ['React', 'TypeScript', 'Storybook', 'Rollup'],
-    screenshotUrl: '',
+    screenshotUrls: [],
     planet: 'moon',
   },
   {
@@ -33,7 +33,7 @@ const FALLBACK_PROJECTS: Project[] = [
     highlight: 'Conflict-free real-time collaborative document editor supporting any concurrency level using CRDT algorithms.',
     content: '',
     tech: ['Vue', 'Node.js', 'WebSockets', 'Yjs'],
-    screenshotUrl: '',
+    screenshotUrls: [],
     planet: 'jupiter',
   },
   {
@@ -42,7 +42,7 @@ const FALLBACK_PROJECTS: Project[] = [
     highlight: 'Cross-platform habit tracker with streak analytics, reminders, and smooth gesture-driven interactions.',
     content: '',
     tech: ['React Native', 'SQLite', 'Reanimated 3'],
-    screenshotUrl: '',
+    screenshotUrls: [],
     planet: 'mars',
   },
   {
@@ -51,7 +51,7 @@ const FALLBACK_PROJECTS: Project[] = [
     highlight: 'Headless commerce solution with server components, edge caching, and sub-100ms time-to-interactive.',
     content: '',
     tech: ['Next.js', 'Shopify', 'GraphQL', 'Vercel'],
-    screenshotUrl: '',
+    screenshotUrls: [],
     planet: 'uranus',
   },
   {
@@ -60,7 +60,7 @@ const FALLBACK_PROJECTS: Project[] = [
     highlight: 'Zero-downtime CI/CD pipeline with automated testing, canary deployments, and Slack alerting.',
     content: '',
     tech: ['Docker', 'GitHub Actions', 'Terraform', 'AWS'],
-    screenshotUrl: '',
+    screenshotUrls: [],
     planet: 'neptune',
   },
   {
@@ -69,7 +69,7 @@ const FALLBACK_PROJECTS: Project[] = [
     highlight: 'Context-aware writing assistant with streaming responses, custom personas, and usage analytics.',
     content: '',
     tech: ['Next.js', 'OpenAI API', 'Supabase', 'Vercel AI'],
-    screenshotUrl: '',
+    screenshotUrls: [],
     planet: 'venus',
   },
   {
@@ -78,7 +78,7 @@ const FALLBACK_PROJECTS: Project[] = [
     highlight: 'This very site — a scroll-driven space journey built with Framer Motion, Next.js, and Notion as CMS.',
     content: '',
     tech: ['Next.js', 'Framer Motion', 'Tailwind', 'Notion'],
-    screenshotUrl: '',
+    screenshotUrls: [],
     planet: 'mercury',
   },
 ]
@@ -112,6 +112,13 @@ function extractFile(prop: any): string {
   return file?.file?.url ?? file?.external?.url ?? ''
 }
 
+function extractFiles(prop: any): string[] {
+  if (!prop?.files?.length) return []
+  return prop.files
+    .map((f: any) => f?.file?.url ?? f?.external?.url ?? '')
+    .filter(Boolean)
+}
+
 export async function fetchProjects(locale: string = 'zh-TW'): Promise<Project[]> {
   if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {
     return FALLBACK_PROJECTS
@@ -135,7 +142,9 @@ export async function fetchProjects(locale: string = 'zh-TW'): Promise<Project[]
           highlight: (locale === 'en' && extractRichText(props['Highlight-en'])) || extractRichText(props['Highlight']),
           content: (locale === 'en' && extractRichText(props['Content-en'])) || extractRichText(props['Content']),
           tech: extractRichText(props['TechStack']).split('·').map((s: string) => s.trim()).filter(Boolean),
-          screenshotUrl: extractFile(props['Screenshot']) ?? extractUrl(props['ScreenshotUrl']) ?? '',
+          screenshotUrls: extractFiles(props['Screenshot']).length
+            ? extractFiles(props['Screenshot'])
+            : extractUrl(props['ScreenshotUrl']) ? [extractUrl(props['ScreenshotUrl'])!] : [],
           demoUrl: extractUrl(props['DemoUrl']),
           githubUrl: extractUrl(props['GitHubUrl']),
           planet: extractSelect(props['Planet']).toLowerCase() as PlanetKey,

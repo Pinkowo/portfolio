@@ -15,7 +15,7 @@ export interface Project {
   highlight: string
   content: string
   tech: string[]
-  screenshotUrl: string
+  screenshotUrls: string[]
   demoUrl?: string
   githubUrl?: string
   planet: PlanetKey
